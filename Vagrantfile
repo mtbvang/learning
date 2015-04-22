@@ -48,21 +48,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "dev2" do |d|
-    d.vm.hostname = "dev2.local"
-
-    d.vm.provision "provision", type: "shell" do |s|
-      s.path = "vagrant/provision.sh"
-      s.args = "0.12.2"
-    end
-
-    d.vm.provider "docker" do |d|
-      d.cmd     = DOCKER_CMD
-      #d.cmd = ["/bin/bash", "/vagrant/vagrant/startConsul.sh"]
-      d.image   = "#{DOCKER_IMAGE_REPO}/#{DOCKER_IMAGE_NAME}:#{DOCKER_IMAGE_TAG}"
-      d.has_ssh = true
-      d.privileged = true
-      d.name = "#{DOCKER_NAMESPACE_PREFIX}-dev2"
-    end
-  end
 end

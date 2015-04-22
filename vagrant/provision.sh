@@ -26,12 +26,12 @@ installConsul () {
 	chmod 755 /etc/init.d/consulagent
 	update-rc.d consulagent defaults
 	service consulagent start	
-	
+	sleep 5
 	consul join 172.17.42.1
 }
 
 NODE_VERSION=$(trim ${1:-0.12.2})
 CONSUL_VERSION=$(trim ${2:-0.5.0})
 
-#installNode
+installNode
 installConsul
