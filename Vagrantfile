@@ -30,8 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     s.args = "3.7.5-1"
   end
 
-  config.vm.define "dev" do |d|
-    d.vm.hostname = "dev.local"
+  config.vm.define "learn" do |d|
+    d.vm.hostname = "learn.local"
 
     d.vm.provision "provision", type: "shell" do |s|
       s.path = "vagrant/provision.sh"

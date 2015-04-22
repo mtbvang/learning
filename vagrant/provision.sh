@@ -12,7 +12,8 @@ installNode () {
 	
 	wget http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz
 	tar -C /usr/local --strip-components 1 -xzf node-v${NODE_VERSION}-linux-x64.tar.gz
-	npm install express-generator -g
+	npm install -g express-generator
+	npm install -g nodemon
 
 }
 
