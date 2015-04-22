@@ -57,4 +57,33 @@
 		      passthru="true" />
 	</target>
 
+	<target name="docker-start-skydns"
+	        description="Pulls down and runs skydns. Run the docker-start-skydock target that depends on this to get both up and running in the correct order.">
+		<exec command="sudo docker run -d -p 172.17.42.1:53:53/udp --name skydns crosbymichael/skydns -nameserver 8.8.8.8:53 -domain local"
+		      passthru="true" />
+	</target>
+
+	<target name="docker-start-skydock"
+	        depends="docker-start-skydns"
+	        description="Pulls down and runs skydock.">
+		<exec command="sudo docker run -d -v /var/run/docker.sock:/docker.sock --name skydock crosbymichael/skydock -ttl 30 -environment dev -s /docker.sock -domain local -name skydns"
+		      passthru="true" />
+	</target>
+
+	<target name="docker-daemon"
+	        depends=""
+	        description="Restart the docker daemon with extra options in this terminal. Required for service discovery with skydns, consul, etc. takes option.docker.extra argument">
+		<property name="option.docker.extra"
+		          value="--bip=172.17.42.1/16 --dns=172.17.42.1" />
+		<exec command="sudo service docker stop " passthru="true" />
+		<exec command="sudo docker -d -H unix:///var/run/docker.sock ${option.docker.extra}"
+		      passthru="true" />
+	</target>
+
+	<target name="docker-start-consul"
+	        description="Pulls down and runs progrium/docker-consul container in single instance mode. Web UI on localhost:8500.">
+		<exec command="docker run -p 8400:8400 -p 8500:8500 -p 172.17.42.1:53:53/udp -h node1 progrium/consul -server -bootstrap -ui-dir /ui"
+		      passthru="true" />
+	</target>
+
 </project>

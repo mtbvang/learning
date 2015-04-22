@@ -14,28 +14,33 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   DOCKER_SYNC_FOLDER_HOST = "/home/dev/code"
   DOCKER_SYNC_FOLDERL_GUEST = "/vagrant_data"
   DOCKER_CMD = ["/usr/sbin/sshd", "-D", "-e"]
-    
+
   DOCKER_NAMESPACE_PREFIX = "learn"
+
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
 
   # Create symlinks to access graph files
   config.vm.provision "shell", inline: "mkdir -p /var/lib/puppet/state/graphs && ln -sf /vagrant/build /var/lib/puppet/state/graphs"
 
   # Boostrap docker containers with shell provisioner.
-  config.vm.provision "shell" do |s|
+  config.vm.provision "bootstrap", type: "shell" do |s|
     s.path = "vagrant/bootstrap.sh"
     s.args = "3.7.5-1"
   end
 
   config.vm.define "dev" do |d|
     d.vm.hostname = "dev.local"
-    
-    d.vm.provision "shell" do |s|
+
+    d.vm.provision "provision", type: "shell" do |s|
       s.path = "vagrant/provision.sh"
       s.args = "0.12.2"
     end
 
     d.vm.provider "docker" do |d|
       d.cmd     = DOCKER_CMD
+      #d.cmd = ["/bin/bash", "/vagrant/vagrant/startConsul.sh"]
       d.image   = "#{DOCKER_IMAGE_REPO}/#{DOCKER_IMAGE_NAME}:#{DOCKER_IMAGE_TAG}"
       d.has_ssh = true
       d.privileged = true
@@ -43,4 +48,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define "dev2" do |d|
+    d.vm.hostname = "dev2.local"
+
+    d.vm.provision "provision", type: "shell" do |s|
+      s.path = "vagrant/provision.sh"
+      s.args = "0.12.2"
+    end
+
+    d.vm.provider "docker" do |d|
+      d.cmd     = DOCKER_CMD
+      #d.cmd = ["/bin/bash", "/vagrant/vagrant/startConsul.sh"]
+      d.image   = "#{DOCKER_IMAGE_REPO}/#{DOCKER_IMAGE_NAME}:#{DOCKER_IMAGE_TAG}"
+      d.has_ssh = true
+      d.privileged = true
+      d.name = "#{DOCKER_NAMESPACE_PREFIX}-dev2"
+    end
+  end
 end

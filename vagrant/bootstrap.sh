@@ -19,10 +19,10 @@ fi
 # apt-get -y install oracle-java8-installer
 
 # Install puppet
-apt-get install -y software-properties-common
-add-apt-repository multiverse
+#apt-get install -y software-properties-common
+#add-apt-repository multiverse
 apt-get update
-apt-get install -y wget dialog curl
+apt-get install -y wget dialog curl unzip
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
 dpkg -i puppetlabs-release-trusty.deb
 apt-get update

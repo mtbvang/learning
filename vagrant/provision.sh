@@ -12,9 +12,26 @@ installNode () {
 	
 	wget http://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz
 	tar -C /usr/local --strip-components 1 -xzf node-v${NODE_VERSION}-linux-x64.tar.gz
+	npm install express-generator -g
 
 }
 
-NODE_VERSION=$(trim ${1:-0.12.2})
+installConsul () {
+	wget https://dl.bintray.com/mitchellh/consul/${CONSUL_VERSION}_linux_amd64.zip	
+	unzip -o ${CONSUL_VERSION}_linux_amd64.zip -d /usr/local/bin
+	apt-get install psmiscd
+	
+	# Install System V service scripts and start agent
+	cp /vagrant/vagrant/consulagent /etc/init.d/	
+	sudo chmod 755 /etc/init.d/consulagent
+	update-rc.d consulagent defaults
+	service consulagent start	
+	
+	consul join 172.17.42.1
+}
 
-installNode
+NODE_VERSION=$(trim ${1:-0.12.2})
+CONSUL_VERSION=$(trim ${2:-0.5.0})
+
+#installNode
+installConsul
