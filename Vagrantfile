@@ -30,12 +30,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     s.args = "3.7.5-1"
   end
 
+  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+  config.vm.provision "file", source: "~/.ssh/config", destination: ".ssh/config"
+  config.vm.provision "file", source: "~/.ssh/founders", destination: ".ssh/founders"
+  config.vm.provision "file", source: "~/.ssh/founders.pub", destination: ".ssh/founders.pub"
+
   config.vm.define "learn" do |d|
     d.vm.hostname = "learn.local"
 
     d.vm.provision "provision", type: "shell" do |s|
       s.path = "vagrant/provision.sh"
       s.args = "0.12.2"
+    end
+
+    d.vm.provision "dotfiles", type: "shell" do |s|
+      s.path = "vagrant/provision-dotfiles.sh"
     end
 
     d.vm.provider "docker" do |d|
