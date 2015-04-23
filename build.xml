@@ -37,6 +37,10 @@
 		      passthru="true" />
 	</target>
 
+	<target name="vagrant-rebuild" description="Runs vagrant destroy and up">
+		<exec command="vagrant destroy -f &amp;&amp; vagrant up" passthru="true" />
+	</target>
+
 	<target name="vagrant-export-ssh-config"
 	        depends="build-init"
 	        description="Dumps the vagrant ssh configs to ssh-config file.">
