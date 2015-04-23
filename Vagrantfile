@@ -29,6 +29,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     s.path = "vagrant/bootstrap.sh"
     s.args = "3.7.5-1"
   end
+  
+  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
+  config.vm.provision "file", source: "~/.ssh/config", destination: ".ssh/config"
+  config.vm.provision "file", source: "~/.ssh/founders", destination: ".ssh/founders"
+  config.vm.provision "file", source: "~/.ssh/founders.pub", destination: ".ssh/founders.pub"
+  config.vm.provision "file", source: "vagrant/.bash_aliases", destination: ".bash_aliases"
 
   config.vm.define "learn" do |d|
     d.vm.hostname = "learn.local"
