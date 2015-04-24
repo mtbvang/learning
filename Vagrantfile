@@ -34,6 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "file", source: "~/.ssh/config", destination: ".ssh/config"
   config.vm.provision "file", source: "~/.ssh/founders", destination: ".ssh/founders"
   config.vm.provision "file", source: "~/.ssh/founders.pub", destination: ".ssh/founders.pub"
+  config.vm.provision "file", source: "vagrant/.bash_aliases", destination: ".bash_aliases"
+  config.vm.provision "file", source: "vagrant/.bashrc", destination: ".bashrc"
 
   config.vm.define "learn" do |d|
     d.vm.hostname = "learn.local"

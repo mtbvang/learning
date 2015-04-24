@@ -20,7 +20,7 @@ installNode () {
 installConsul () {
 	wget https://dl.bintray.com/mitchellh/consul/${CONSUL_VERSION}_linux_amd64.zip	
 	unzip -o ${CONSUL_VERSION}_linux_amd64.zip -d /usr/local/bin
-	apt-get install psmisc git
+	apt-get install -yq psmisc
 	
 	# Install System V service scripts and start agent
 	cp /vagrant/vagrant/consulagent /etc/init.d/	
@@ -36,3 +36,4 @@ CONSUL_VERSION=$(trim ${2:-0.5.0})
 
 installNode
 installConsul
+apt-get install -yq git
