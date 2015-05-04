@@ -15,7 +15,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   DOCKER_SYNC_FOLDERL_GUEST = "/vagrant_data"
   DOCKER_CMD = ["/usr/sbin/sshd", "-D", "-e"]
 
-  DOCKER_NAMESPACE_PREFIX = "learn"
+  # UPDATE these project specific details.
+  PROJECT_NAME = "learn"
+  FORWARDED_APP_PORT = '3002'
 
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
@@ -37,8 +39,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "file", source: "vagrant/.bash_aliases", destination: ".bash_aliases"
   config.vm.provision "file", source: "vagrant/.bashrc", destination: ".bashrc"
 
-  config.vm.define "learn" do |d|
-    d.vm.hostname = "learn.local"
+  config.vm.define "#{PROJECT_NAME}" do |d|
+    d.vm.hostname = "#{PROJECT_NAME}.local"
+    d.vm.network "forwarded_port", guest: 3000, host: FORWARDED_APP_PORT
 
     d.vm.provision "provision", type: "shell" do |s|
       s.path = "vagrant/provision.sh"
@@ -55,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       d.image   = "#{DOCKER_IMAGE_REPO}/#{DOCKER_IMAGE_NAME}:#{DOCKER_IMAGE_TAG}"
       d.has_ssh = true
       d.privileged = true
-      d.name = "#{DOCKER_NAMESPACE_PREFIX}-dev"
+      d.name = "#{PROJECT_NAME}-dev"
     end
   end
 
