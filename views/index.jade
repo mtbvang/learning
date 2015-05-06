@@ -1,5 +1,24 @@
-extends layout
+extends sub-layout
 
 block content
-  h1= title
+  h1#title.title #{title}
   p Welcome to #{title}
+  mixin list
+    ul
+      li foo
+      li bar
+      li baz
+  //- Use
+  +list
+  +list
+  - for (var x = 0; x < 3; x++)
+    li item
+   
+  p.
+    If you take a look at this page's source #[a(target="_blank", href="https://github.com/jadejs/jade/blob/master/docs/views/reference/interpolation.jade") on GitHub],
+    you'll see several places where the tag interpolation operator is
+    used, like so. asdf
+    
+  block sidebar
+    p Side bar
+    
