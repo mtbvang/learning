@@ -58,7 +58,8 @@ body {
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container -->Display
+		<!-- /.container -->
+		Display
 	</nav>
 
 	<!-- Page Content -->
@@ -68,20 +69,22 @@ body {
 			<div class="col-lg-12 text-center">
 				<h1>LearnDeploy</h1>
 				<div id="loggedout">
+					<p>Welcome to Learn/Deploy</p>
+					<p>To get started, you need to connect to Trello and import
+						your board.</p>
 					<a id="connectLink" class="btn btn-primary" href="#">Connect to
 						Trello</a>
 				</div>
 
 				<div id="loggedin">
 					<div id="header">
-						Logged in to as <span id="fullName"></span> <a id="disconnect"
-							href="#">Log Out</a>
+						Logged in to Trello as <span id="fullName"></span> <a
+							id="disconnect" href="#">Log Out</a>
 					</div>
-
-					<label>Choose a board to import from the List</label>
+					<p>Great!</p>
+					<p>Now let's import the board you want to work on!</p>
+					<p>Choose it in the dropdown.</p>
 					<div id="output"></div>
-
-					<label>Cards Below for Board Selected</label>
 					<div id="outputCards"></div>
 				</div>
 			</div>
@@ -93,7 +96,8 @@ body {
 
 	<!-- jQuery Version 1.11.1 -->
 	<script src="../js/jquery.min.js"></script>
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="../js/bootstrap.min.js"></script>
@@ -101,7 +105,10 @@ body {
 	<!-- Trello -->
 	<script
 		src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
+
+	<!-- Application  -->
 	<script src="../js/learndeploy.js"></script>
+
 </body>
 
 </html>

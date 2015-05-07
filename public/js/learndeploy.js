@@ -55,36 +55,52 @@ var listMemberCards = function() {
 	});
 }
 
-var getCardsForBoard = function() {
+var displayCards = function(cards) {
+	$outputCards = $("#outputCards")// .empty()
+	$.each(cards, function(ix, card) {
+		$("<a>").attr({
+			href : card.url,
+			target : "trello"
+		}).addClass("card").text(card.name.toUpperCase())
+				.appendTo($outputCards);
+
+		// Text area with card description
+		var $textAreaDiv = $("<div/>", {
+			"class" : "controls"
+		}).appendTo($outputCards);
+		var $textArea = $("<textarea/>", {
+			"class" : "form-control input-xlarge",
+			"id" : "textarea",
+			"rows" : "3"
+		}).text(card.desc).appendTo($textAreaDiv);
+		$textArea.autosize();
+	});
+}
+
+var displayCardsForBoard = function() {
 	var selectedBoard = $("#boards").val();
-	console.log("selectedBoard: " + selectedBoard);
-	// Clear outputCards
+	var boardName = $("#boards option[value='" + selectedBoard + "']").text();
+	// Clear outputCards to only show select board's cards.
 	$("#outputCards").empty();
-	var $cards = $("<div>").text("Loading Boards...").appendTo("#outputCards");
+	var $cards = $("<div>").text("List: " + boardName).appendTo("#outputCards");
+	var $cards = $("<div>").text("Tasks").appendTo("#outputCards");
 
 	// Output all of the cards for the selected board.
 	var resource = "boards/" + selectedBoard + "/cards";
 	console.log("resource: " + resource);
-	Trello.get(resource, function(cards) {
-		$cards.empty();
-		$.each(cards, function(ix, card) {
-			$("<a>").attr({
-				href : card.url,
-				target : "trello"
-			}).addClass("card").text(card.name).appendTo($cards);
-		});
-	});
+	Trello.get(resource, displayCards);
 }
 
-var getBoards = function() {
+// Populates select with boards and sets change event to displayCardsForBoard().
+var populateSelectWithBoards = function() {
 	Trello.members.get("me", function(member) {
 		$("#fullName").text(member.fullName);
 
+		// Set change event to trigger displayCardsForBoard on select.
 		var $boards = $("<select>").attr("id", "boards").appendTo("#output")
-				.change(getCardsForBoard);
+				.change(displayCardsForBoard);
 
-		// Output a list of all of the boards that the member
-		// is assigned to
+		// Populate select with users boards.
 		Trello.get("members/me/boards", function(boards) {
 			$boards.empty();
 			$.each(boards, function(ix, board) {
@@ -103,7 +119,7 @@ var onAuthorize = function() {
 	updateLoggedIn();
 	$("#output").empty();
 
-	getBoards();
+	populateSelectWithBoards();
 
 };
 
