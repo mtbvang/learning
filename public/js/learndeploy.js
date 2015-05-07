@@ -62,8 +62,7 @@ var getCardsForBoard = function() {
 	$("#outputCards").empty();
 	var $cards = $("<div>").text("Loading Boards...").appendTo("#outputCards");
 
-	// Output a list of all of the boards that the member
-	// is assigned to based on what they choose in select dropdown
+	// Output all of the cards for the selected board.
 	var resource = "boards/" + selectedBoard + "/cards";
 	console.log("resource: " + resource);
 	Trello.get(resource, function(cards) {
@@ -77,7 +76,7 @@ var getCardsForBoard = function() {
 	});
 }
 
-var listBoardCards = function() {
+var getBoards = function() {
 	Trello.members.get("me", function(member) {
 		$("#fullName").text(member.fullName);
 
@@ -104,7 +103,7 @@ var onAuthorize = function() {
 	updateLoggedIn();
 	$("#output").empty();
 
-	listBoardCards();
+	getBoards();
 
 };
 
