@@ -55,12 +55,34 @@ var listMemberCards = function() {
 	});
 }
 
+var getCardsForBoard = function() {
+	var selectedBoard = $("#boards").val();
+	console.log("selectedBoard: " + selectedBoard);
+	// Clear outputCards
+	$("#outputCards").empty();
+	var $cards = $("<div>").text("Loading Boards...").appendTo("#outputCards");
+
+	// Output a list of all of the boards that the member
+	// is assigned to based on what they choose in select dropdown
+	var resource = "boards/" + selectedBoard + "/cards";
+	console.log("resource: " + resource);
+	Trello.get(resource, function(cards) {
+		$cards.empty();
+		$.each(cards, function(ix, card) {
+			$("<a>").attr({
+				href : card.url,
+				target : "trello"
+			}).addClass("card").text(card.name).appendTo($cards);
+		});
+	});
+}
+
 var listBoardCards = function() {
 	Trello.members.get("me", function(member) {
 		$("#fullName").text(member.fullName);
 
-		var $boards = $("<select>").attr("id", "boards").text("Loading Boards...").appendTo(
-				"#output");
+		var $boards = $("<select>").attr("id", "boards").appendTo("#output")
+				.change(getCardsForBoard);
 
 		// Output a list of all of the boards that the member
 		// is assigned to
@@ -69,26 +91,9 @@ var listBoardCards = function() {
 			$.each(boards, function(ix, board) {
 				$("<option>").attr({
 					href : board.url,
-					target : "trello", 
+					target : "trello",
 					value : board.id
 				}).addClass("board").text(board.name).appendTo($boards);
-			});
-		});
-
-		var $cards = $("<div>").text("Loading Boards...").appendTo(
-				"#outputCards");
-
-		// Output a list of all of the boards that the member
-		// is assigned to based on what they choose in select dropdown
-		var resource = "boards/" + $("#boards").val() + "/cards";
-		console.log("resource: " + resource);
-		Trello.get(resource, function(cards) {
-			$cards.empty();
-			$.each(cards, function(ix, card) {
-				$("<a>").attr({
-					href : card.url,
-					target : "trello"
-				}).addClass("card").text(card.name).appendTo($cards);
 			});
 		});
 
