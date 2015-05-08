@@ -89,5 +89,11 @@
 		<exec command="sudo nohup docker run -d -h node1 --name consul  -p 8300:8300  -p 8301:8301  -p 8301:8301/udp  -p 8302:8302  -p 8302:8302/udp  -p 8400:8400  -p 8500:8500  -p 172.17.42.1:53:53/udp  progrium/consul -server -bootstrap -ui-dir /ui &amp;"
 		      passthru="true" />
 	</target>
+	
+	<target name="app-start"
+	          description="Runs the application with nodemon. It's accessible from your local host on http://localhost:3002.">
+	    <exec command="nodemon bin/www"
+	          passthru="true" />
+	  </target>
 
 </project>

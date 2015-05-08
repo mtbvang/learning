@@ -58,22 +58,35 @@ var listMemberCards = function() {
 var displayCards = function(cards) {
 	$outputCards = $("#outputCards")// .empty()
 	$.each(cards, function(ix, card) {
-		$("<a>").attr({
+
+		var $fieldSet = $("<fieldset/>").appendTo($outputCards);
+
+		var $cardTitle = $("<a>").attr({
 			href : card.url,
 			target : "trello"
-		}).addClass("card").text(card.name.toUpperCase())
-				.appendTo($outputCards);
+		}).addClass("card").text(card.name.toUpperCase()).appendTo($fieldSet);
 
 		// Text area with card description
 		var $textAreaDiv = $("<div/>", {
 			"class" : "controls"
-		}).appendTo($outputCards);
+		}).appendTo($fieldSet);
 		var $textArea = $("<textarea/>", {
 			"class" : "form-control input-xlarge",
 			"id" : "textarea",
 			"rows" : "3"
 		}).text(card.desc).appendTo($textAreaDiv);
 		$textArea.autosize();
+
+		// New media button
+		var $mediaButton = $("<div/>").addClass("the-buttons clearfix").append(
+				$("<a>").attr({
+					"href" : "#addMediaModal",
+					"data-toggle" : "modal"
+				}).addClass("btn btn-sm btn-primary").text("Add new media"))
+				.appendTo($fieldSet);
+
+		$("#modalDescriptionTextArea").autosize();
+
 	});
 }
 
