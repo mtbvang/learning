@@ -44,12 +44,20 @@ var handleAddYouTubeVideo = function() {
 	});
 
 	// Add youtube video description
-	var $textArea = $("<textarea/>", {
-		"class" : "form-control input-xlarge",
+	var $textArea = $("<a/>", { 
 		"id" : "textarea" + youTubeId,
-		"rows" : "1"
 	}).text($("#modalDescriptionTextArea").val()).appendTo(cardColYouTubeVideo);
 	$textArea.autosize();
+
+	// $("#modalDescriptionTextArea").autosize();
+
+	// make outputcards editable
+	$textArea.editable({
+		type : "textarea",
+		placeholder : "Youtube video description",
+		title : "Youtube video description",
+	});
+	$textArea.editable("disable", true);
 
 	$('#addMediaModal').modal('toggle');
 

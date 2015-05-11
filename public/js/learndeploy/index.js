@@ -109,7 +109,6 @@ var displayCards = function(cards) {
 		// Add textarea with card description
 		var cardTextAreaDiv = getCardCol($cardItems);
 		var $textArea = $("<a/>", {
-			"href" : "#",
 			"id" : "textarea" + ix
 		}).text(card.desc).appendTo(cardTextAreaDiv);
 		// $textArea.autosize();
@@ -128,10 +127,9 @@ var displayCards = function(cards) {
 			"href" : "#addMediaModal",
 			"data-toggle" : "modal",
 			"data-card-id" : ix
-		}).addClass("btn btn-sm btn-primary").text("Add new media").appendTo(
+		}).addClass("btn btn-sm btn-primary pull-right").text("Add new media").appendTo(
 				cardAddMediaButtonDiv);
 
-		$("#modalDescriptionTextArea").autosize();
 
 		// Add cardId to modal so we an add media back to the correct card.
 		$("#addMediaModal").on("show.bs.modal", function(e) {
