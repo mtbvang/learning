@@ -55,40 +55,95 @@ var listMemberCards = function() {
 	});
 }
 
+var getCardCol = function(parentElement) {
+	var $cardRow = $("<div class='row voffset2' />").appendTo(parentElement);
+
+	var $cardCol = $("<div class='col-lg-12'></div>").appendTo($cardRow);
+
+	var $cardColDiv = $("<div/>").appendTo($cardCol);
+
+	return $cardColDiv;
+};
+
 var displayCards = function(cards) {
 	$outputCards = $("#outputCards")// .empty()
+
 	$.each(cards, function(ix, card) {
 
-		var $fieldSet = $("<fieldset/>").appendTo($outputCards);
+		var cardNum = ix + 1;
+		var $cardSection = $(
+				"<section id='cardSection" + ix + "' class='well well-sm' />")
+				.appendTo($outputCards);
 
+		var $cardItems = $("<div/>", {
+			"id" : "cardItems" + ix
+		}).appendTo($cardSection);
+
+		// Add editable icon
+		var editIconDiv = getCardCol($cardItems);
+		var editIconId = "editable-toggle" + ix
+		var $editIcon = $("<a>").attr({
+			"id" : editIconId,
+			"href" : "javascript:void(0);",
+			"class" : "btn btn-default pull-right",
+		}).append($("<i>").attr({
+			"class" : "glyphicon glyphicon-edit"
+		})).appendTo(editIconDiv);
+
+		// enable / disable editing for
+		$("#editable-toggle" + ix).click(function() {
+			$("#cardSection" + ix + " .editable").editable('toggleDisabled');
+		});
+
+		// Add card title
+		var cardTitleDiv = getCardCol($cardItems);
 		var $cardTitle = $("<a>").attr({
 			href : card.url,
 			target : "trello"
-		}).addClass("card").text(card.name.toUpperCase()).appendTo($fieldSet);
+		}).text("Trello Card " + cardNum + ": " + card.name.toUpperCase())
+				.appendTo(cardTitleDiv);
+		$cardTitle.editable("disable", true);
 
-		// Text area with card description
-		var $textAreaDiv = $("<div/>", {
-			"class" : "controls"
-		}).appendTo($fieldSet);
-		var $textArea = $("<textarea/>", {
-			"class" : "form-control input-xlarge",
-			"id" : "textarea",
-			"rows" : "3"
-		}).text(card.desc).appendTo($textAreaDiv);
-		$textArea.autosize();
+		$("<br>").appendTo($cardTitle);
 
-		// New media button
-		var $mediaButton = $("<div/>").addClass("the-buttons clearfix").append(
-				$("<a>").attr({
-					"href" : "#addMediaModal",
-					"data-toggle" : "modal"
-				}).addClass("btn btn-sm btn-primary").text("Add new media"))
-				.appendTo($fieldSet);
+		// Add textarea with card description
+		var cardTextAreaDiv = getCardCol($cardItems);
+		var $textArea = $("<a/>", {
+			"href" : "#",
+			"id" : "textarea" + ix
+		}).text(card.desc).appendTo(cardTextAreaDiv);
+		// $textArea.autosize();
+
+		// make outputcards editable
+		$textArea.editable({
+			type : "textarea",
+			placeholder : "Card description",
+			title : "Trello Card Description",
+		});
+		$textArea.editable("disable", true);
+
+		// Add new media button
+		var cardAddMediaButtonDiv = getCardCol($cardSection);
+		var $mediaButton = $("<a>").attr({
+			"href" : "#addMediaModal",
+			"data-toggle" : "modal",
+			"data-card-id" : ix
+		}).addClass("btn btn-sm btn-primary").text("Add new media").appendTo(
+				cardAddMediaButtonDiv);
 
 		$("#modalDescriptionTextArea").autosize();
 
+		// Add cardId to modal so we an add media back to the correct card.
+		$("#addMediaModal").on("show.bs.modal", function(e) {
+			var cardId = $(e.relatedTarget).data('card-id');
+			console.log("cardId: " + cardId);
+			$(e.currentTarget).data("cardId", cardId);
+			// console.log("addMediaModal.data: " +
+			// $(e.currentTarget).data("cardId"));
+		});
+
 	});
-}
+};
 
 var displayCardsForBoard = function() {
 	var selectedBoard = $("#boards").val();
@@ -165,3 +220,9 @@ $("#connectLink").click(function() {
 });
 
 $("#disconnect").click(logout);
+
+$(document).ready(function() {
+	// toggle `popup` / `inline` mode
+	$.fn.editable.defaults.mode = 'popup';
+
+});
