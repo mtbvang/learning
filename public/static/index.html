@@ -19,7 +19,8 @@
 	rel="stylesheet" />
 
 <!-- Custom CSS -->
-<link href="../css/learndeploy.css" rel="stylesheet">
+<link href="../css/learndeploy/main.css" rel="stylesheet">
+<link href="../css/learndeploy/youtube.css" rel="stylesheet">
 <style>
 body {
 	padding-top: 70px;
@@ -175,11 +176,35 @@ body {
 		</div>
 	</div>
 
+	<div class="arama">
+
+		<h2>Youtube API jQuery AutoComplete</h2>
+		<div class="ui-widget">
+			<label for="youtube">Youtube Arama: </label> <input id="youtube" />
+			<button id="submit">ARA</button>
+		</div>
+
+	</div>
+
+	<div id="results"></div>
+
+  <div id="login-container" class="pre-auth">
+   This application requires access to your YouTube account.
+   Please <a href="#" id="login-link">authorize</a> to continue.
+  </div>
+	<div id="buttons" class="post-auth">
+		<label> <input id="query" value='cats' type="text" />
+		<button id="search-button" disabled onclick="search()">Search</button></label>
+	</div>
+	<div id="search-container"></div>
 
 	<!-- /.container -->
 
-	<!-- jQuery Version 1.11.1 -->
-	<script src="../js/jquery.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
 
@@ -192,6 +217,10 @@ body {
 
 	<!-- Youtube -->
 	<script src="../js/jQuery.tubeplayer.js"></script>
+  <script src="../js/learndeploy/auth.js"></script>
+  <script src="../js/learndeploy/search.js"></script>
+  <script
+    src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
 
 	<!-- Bootstrap X-editable -->
 	<script
@@ -200,6 +229,7 @@ body {
 	<!-- Custom Application JS  -->
 	<script src="../js/learndeploy/index.js"></script>
 	<script src="../js/learndeploy/handlers.js"></script>
+	<script src="../js/learndeploy/youtubeSearch.js"></script>
 
 </body>
 

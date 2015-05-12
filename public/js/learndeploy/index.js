@@ -21,18 +21,15 @@ var listMemberCards = function() {
 		// is assigned to
 		Trello.get("members/me/cards", function(cards) {
 			$cards.empty();
-			$("<div>").text("Click a card to add a comment to it").appendTo(
-					$cards);
+			$("<div>").text("Click a card to add a comment to it").appendTo($cards);
 
 			$.each(cards, function(ix, card) {
-				$("<a>").addClass("card").text(card.name).appendTo($cards)
-						.click(
-								function() {
-									Trello.post("cards/" + card.id
-											+ "/actions/comments", {
-										text : "Hello from LearnDeploy"
-									})
-								})
+				$("<a>").addClass("card").text(card.name).appendTo($cards).click(
+						function() {
+							Trello.post("cards/" + card.id + "/actions/comments", {
+								text : "Hello from LearnDeploy"
+							})
+						})
 			});
 		});
 
@@ -44,8 +41,8 @@ var listMemberCards = function() {
 
 			$.each(boards, function(ix, board) {
 				console.log("board name: " + board.name)
-				$("<a>").addClass("board").text(board.name).appendTo($boards)
-						.click(function() {
+				$("<a>").addClass("board").text(board.name).appendTo($boards).click(
+						function() {
 							console.log("clicked board " + board.name)
 
 						})
@@ -127,9 +124,8 @@ var displayCards = function(cards) {
 			"href" : "#addMediaModal",
 			"data-toggle" : "modal",
 			"data-card-id" : ix
-		}).addClass("btn btn-sm btn-primary pull-right").text("Add new media").appendTo(
-				cardAddMediaButtonDiv);
-
+		}).addClass("btn btn-sm btn-primary pull-right").text("Add new media")
+				.appendTo(cardAddMediaButtonDiv);
 
 		// Add cardId to modal so we an add media back to the correct card.
 		$("#addMediaModal").on("show.bs.modal", function(e) {
@@ -221,6 +217,6 @@ $("#disconnect").click(logout);
 
 $(document).ready(function() {
 	// toggle `popup` / `inline` mode
-	$.fn.editable.defaults.mode = 'popup';
-
+	$.fn.editable.defaults.mode = 'inline';
+	
 });
