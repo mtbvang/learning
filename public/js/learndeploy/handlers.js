@@ -5,7 +5,7 @@ var handleAddYouTubeVideo = function() {
 	// Get card id in modal
 	var cardId = $("#addMediaModal").data("cardId");
 	console.log("handleAddMedia called with cardId: " + cardId);
-	console.log("youTubeId: " + $("#youTubeId").val());
+	console.log("youTubeSearch: " + $("#youTubeSearch").val());
 
 	// Embed youtube video after card textarea.
 	var $cardItems = $("#cardItems" + cardId)
@@ -15,8 +15,8 @@ var handleAddYouTubeVideo = function() {
 		"class" : "auto-resizable-iframe"
 	});
 
-	var youTubeId = $("#youTubeId").val();
-	var divId = "card" + cardId + "-" + youTubeId
+	var youTubeSearch = $("#youTubeSearch").val();
+	var divId = "card" + cardId + "-" + youTubeSearch
 	$("<div id=" + divId + " />").appendTo(cardColYouTubeVideo);
 
 	var mediaDiv = $("#" + divId + "")
@@ -26,7 +26,7 @@ var handleAddYouTubeVideo = function() {
 		height : '100%', // the height of the player
 		allowFullScreen : "true", // true by default, allow user to go full
 		// screen
-		initialVideo : youTubeId, // the video that is loaded into the player
+		initialVideo : youTubeSearch, // the video that is loaded into the player
 		preferredQuality : "default",// preferred quality: default, small,
 		// medium, large, hd720
 		onPlay : function(id) {
@@ -44,8 +44,8 @@ var handleAddYouTubeVideo = function() {
 	});
 
 	// Add youtube video description
-	var $textArea = $("<a/>", { 
-		"id" : "textarea" + youTubeId,
+	var $textArea = $("<a/>", {
+		"id" : "textarea" + youTubeSearch,
 	}).text($("#modalDescriptionTextArea").val()).appendTo(cardColYouTubeVideo);
 	$textArea.autosize();
 
