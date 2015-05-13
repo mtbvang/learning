@@ -10,6 +10,9 @@ The API development board is at https://trello.com/api
 The &dummy=.js part of the managed resource URL is required per http://doc.jsfiddle.net/basic/introduction.html#add-resources
  */
 
+var setNewYouTubeMedia = new Set();
+	
+
 var listMemberCards = function() {
 	Trello.members.get("me", function(member) {
 		$("#fullName").text(member.fullName);
@@ -62,7 +65,7 @@ var getCardCol = function(parentElement) {
 	return $cardColDiv;
 };
 
-var cornerBtnElement = function(glyphiconType, editIconId) {
+var cornerBtnElement = function(glyphiconType, linkId) {
 
 	var el = $('<div/>', {
 		class : 'zero-corner-btn'
@@ -70,7 +73,7 @@ var cornerBtnElement = function(glyphiconType, editIconId) {
 		class : 'corner-btn'
 	}).append($('<a/>', {
 		//class : 'btn',
-		id : editIconId,
+		id : linkId,
 		href : 'javascript:void(0);'
 	}).append($('<i/>', {
 		class : 'glyphicon glyphicon-' + glyphiconType

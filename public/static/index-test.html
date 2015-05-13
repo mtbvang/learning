@@ -100,9 +100,10 @@ body {
 		</div>
 		<!-- /.row -->
 
-		<div id="addMediaModal" class="modal fade" tabindex="-1" role="dialog"
-			aria-labelledby="addMediaModalLabel" aria-hidden="true"
-			style="display: none;">
+
+
+		<div id="testAddMediaModal" class="" tabindex="-1" role="dialog"
+			aria-labelledby="addMediaModalLabel">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -115,9 +116,8 @@ body {
 								<div class="input-group">
 									<input class="form-control input-xlarge" id="youtubeVideoId">
 									<span class="input-group-btn">
-										<button id="searchYoutubeVideoId"
-											class="btn btn-default pull-right" type="button"
-											onclick="handleAddYouTubeVideo()">Add</button>
+										<button id="searchyoutubeVideoId"
+											class="btn btn-default pull-right" type="button" onclick="handleAddYouTubeVideo()" >Add</button>
 									</span>
 								</div>
 								<p class="help-block">Or use the search box below.</p>
@@ -125,16 +125,69 @@ body {
 								<div class="panel input-group">
 									<input id="youtube" class="form-control input-xlarge" /> <span
 										class="input-group-btn">
-										<button id="searchYoutube" class="btn btn-default pull-right"
+										<button id="searchYouTube" class="btn btn-default pull-right"
 											type="button">Search</button>
 									</span>
 								</div>
 
 								<div id="searchResults" class="panel panel-default">
 									<div class="panel-heading">Search Results</div>
-									<div class="panel-body"></div>
+									<div class="panel-body">
+										<div class="zero-corner-btn">
+											<span class="corner-btn"><a id="addYoutube0"
+												href="javascript:void(0);"><i
+													class="glyphicon glyphicon-plus"></i></a></span>
+										</div>
+										<div class="hightlight youtube">
+											<img src="https://i.ytimg.com/vi/a2RA0vsZXf8/default.jpg">
+											<h3>
+												<a href="javascript:void(0)"
+													onclick="$.youtubePlay('a2RA0vsZXf8', 'https://www.youtube.com/v/a2RA0vsZXf8?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">"Just
+													A Dream" by Nelly - Sam Tsui &amp; Christina Grimmie</a>
+											</h3>
+											<p>Check out our epic song with Coke Bottles!
+												https://www.youtube.com/watch?v=ZzuRvzsNpTU Hope you guys
+												like this duet between Christina Grimmie and Sam ...</p>
+										</div>
+										<div id="a2RA0vsZXf8"></div>
+										<div class="zero-corner-btn">
+											<span class="corner-btn"><a id="addYoutube1"
+												href="javascript:void(0);"><i
+													class="glyphicon glyphicon-plus"></i></a></span>
+										</div>
+										<div class="hightlight youtube">
+											<img src="https://i.ytimg.com/vi/09R8_2nJtjg/default.jpg">
+											<h3>
+												<a href="javascript:void(0)"
+													onclick="$.youtubePlay('09R8_2nJtjg', 'https://www.youtube.com/v/09R8_2nJtjg?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">Maroon
+													5 - Sugar</a>
+											</h3>
+											<p>Buy Sugar on iTunes: http://smarturl.it/M5V Tickets
+												for Maroon 5's North American with Rozzi Crane and European
+												Tour with Nick Gardner are on-sale now!</p>
+										</div>
+										<div id="09R8_2nJtjg"></div>
+										<div class="zero-corner-btn">
+											<span class="corner-btn"><a id="addYoutube2"
+												href="javascript:void(0);"><i
+													class="glyphicon glyphicon-plus"></i></a></span>
+										</div>
+										<div class="hightlight youtube">
+											<img src="https://i.ytimg.com/vi/w1oM3kQpXRo/default.jpg">
+											<h3>
+												<a href="javascript:void(0)"
+													onclick="$.youtubePlay('w1oM3kQpXRo', 'https://www.youtube.com/v/w1oM3kQpXRo?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">Taylor
+													Swift - Everything Has Changed ft. Ed Sheeran</a>
+											</h3>
+											<p>Music video by Taylor Swift performing Everything Has
+												Changed. (C) 2013 Big Machine Records, LLC.</p>
+										</div>
+										<div id="w1oM3kQpXRo"></div>
+									</div>
 									<!--  div class="panel-footer">Panel footer</div>-->
 								</div>
+
+
 							</div>
 							<div class="control-group">
 								<label class="control-label" for="textarea">Description</label>
@@ -146,16 +199,70 @@ body {
 
 							<hr>
 							<div class="control-group">
-								<button class="btn btn-default" onClick="closeAddMediaModal()">Close</button>
+								<button class="btn btn-default">Close</button>
 								<button id="modalAddMediaBtn" class="btn btn-primary"
 									onClick="handleAddYouTubeVideo()">Add Media</button>
 							</div>
 						</fieldset>
 
+						<!--  div id="login-container" class="pre-auth">
+              This application requires access to your YouTube account. Please
+              <a href="#" id="login-link">authorize</a> to continue.
+            </div>
+            <div id="buttons" class="post-auth">
+              <label> <input id="query" value='cats' type="text" />
+                <button id="search-button" disabled onclick="search()">Search</button></label>
+            </div>
+            <div id="search-container"></div> -->
+
 					</div>
 				</div>
 			</div>
 		</div>
+
+
+
+		<div class="zero-corner-btn">
+			<span class="corner-btn"> <a id="editable-toggle0"
+				href="javascript:void(0);" class=""> <i
+					class="glyphicon glyphicon-plus"></i>
+			</a>
+			</span>
+		</div>
+		<section id="cardSection0" class="hightlight well well-sm">
+			<div id="cardItems0">
+
+				<div class="row voffset2">
+					<div class="col-lg-12">
+						<div>
+							<a
+								href="https://trello.com/c/8WTFlwKU/16-link-to-send-task-list-to-user"
+								target="trello"
+								class="editable editable-click editable-disabled" tabindex="-1">Trello
+								Card 1: LINK TO SEND 'TASK LIST' TO USER.<br>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row voffset2">
+					<div class="col-lg-12">
+						<div>
+							<a id="textarea0"
+								class="editable editable-pre-wrapped editable-click editable-disabled"
+								tabindex="-1"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row voffset2">
+				<div class="col-lg-12">
+					<div>
+						<a href="#addMediaModal" data-toggle="modal" data-card-id="0"
+							class="btn btn-sm btn-primary pull-right">Add new media</a>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!-- /.container -->
 

@@ -1,5 +1,4 @@
-var handleAddYouTubeVideo = function() {
-
+var addMediaToCard = function() {
 	$outputCards = $("#outputCards")
 
 	// Get card id in modal
@@ -15,7 +14,7 @@ var handleAddYouTubeVideo = function() {
 		"class" : "auto-resizable-iframe"
 	});
 
-	var youTubeSearch = $("#youTubeSearch").val();
+	var youTubeSearch = $("#youtubeVideoId").val();
 	var divId = "card" + cardId + "-" + youTubeSearch
 	$("<div id=" + divId + " />").appendTo(cardColYouTubeVideo);
 
@@ -29,18 +28,13 @@ var handleAddYouTubeVideo = function() {
 		initialVideo : youTubeSearch, // the video that is loaded into the player
 		preferredQuality : "default",// preferred quality: default, small,
 		// medium, large, hd720
-		onPlay : function(id) {
-		}, // after the play method is called
-		onPause : function() {
-		}, // after the pause method is called
-		onStop : function() {
-		}, // after the player is stopped
-		onSeek : function(time) {
-		}, // after the video has been seeked to a defined point
-		onMute : function() {
-		}, // after the player is muted
-		onUnMute : function() {
-		} // after the player is unmuted
+		onPlay : function(id) {}, // after the play method is called
+		onPause : function() {}, // after the pause method is called
+		onStop : function() {}, // after the player is stopped
+		onSeek : function(time) {}, // after the video has been seeked to a defined
+																// point
+		onMute : function() {}, // after the player is muted
+		onUnMute : function() {} // after the player is unmuted
 	});
 
 	// Add youtube video description
@@ -60,5 +54,28 @@ var handleAddYouTubeVideo = function() {
 	$textArea.editable("disable", true);
 
 	$('#addMediaModal').modal('toggle');
+}
+
+var closeAddMediaModal = function() {
+	// clear all data associated with modal.
+	setNewYouTubeMedia.clear();
+	$('#addMediaModal').modal('toggle');
+}
+
+var handleAddYouTubeVideo = function() {
+	
+	var id = $("#youtubeVideoId").val();
+	
+	if(id) {
+		setNewYouTubeMedia.add(id);
+		console.log("Adding " + $("#youtubeVideoId").val() + " to setNewYouTubeMedia of size: " + setNewYouTubeMedia.size);
+		console.log("setNewYouTubeMedia: " + setNewYouTubeMedia.toString());
+	} else {
+		console.log("Empty youtube videoid: " + id);
+		console.log("setNewYouTubeMedia size: " + setNewYouTubeMedia.size);
+	}
+	
+
+	
 
 }
