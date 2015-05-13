@@ -1,10 +1,10 @@
 * { padding: 0; margin: 0; list-style: none; font-family: Arial }
 
-.youtubeOynat { display: none; background: #ddd; padding: 10px }
+.youtubePlay { display: none; background: #ddd; padding: 10px }
 .youtube {
     border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
+    /*padding: 10px;
+    margin: 10px;*/
     overflow: hidden
 }
 .youtube img {

@@ -29,18 +29,31 @@ $("#youtube")
 					/* You could use this to make the selection process until */
 					select : function(event, ui) {
 						$.youtubeAPI(ui.item.label);
-					}
+					},
+					appendTo: $("#addMediaModal")
 				});
 
 /* Search button */
-$('button#submit').click(function() {
+$('button#searchYouTube').click(function() {
 	var value = $('input#youtube').val();
 	$.youtubeAPI(value);
 });
 
+$.displayYoutubeResult = function(item) {
+	var result = $('<div/>', {class : 'youtube'})
+		.append($('<img>', {src : item.snippet.thumbnails.default.url, alt : ''}))
+		.append($('<h3/>')
+				.append($('<a/>', 
+						{ href : 'javascript:void(0)', 
+							onclick : "$.youtubePlay('" + item.id.videoId + "', 'https://www.youtube.com/v/" + item.id.videoId + "?version=3&amp;f=videos&amp;app=youtube_gdata&amp;autoplay=1')"}).html(item.snippet.title)))
+		.append($('<p/>').html(item.snippet.description));
+	return result;
+}
+
+
 /* YouTube Search Function */
 $.youtubeAPI = function(word) {
-	var results = $('#results');
+	var results = $('#searchResults .panel-body');
 	var apiKey = 'AIzaSyAnLqIk7Olo7hT1L8GAcM0Icc6sbj1SCqI';
 	results.html('Searching...');
 	$
@@ -50,33 +63,18 @@ $.youtubeAPI = function(word) {
 						+ '&maxResults=15&key=' + apiKey,
 				dataType : 'jsonp',
 				success : function(response) {
-					console.log("response: " + JSON.stringify(response.items, null, 4));
+					// console.log("response: " + JSON.stringify(response.items, null,
+					// 4));
 					if (response.items) {
-						results.empty();
+						results.empty();						
 						$
 								.each(
 										response.items,
 										function(i, item) {
 											results
-													.append('<div class="youtube">\
-                        <img src="'
-															+ item.snippet.thumbnails.default.url
-															+ '" alt="" />\
-                        <h3><a href="javascript:void(0)" onclick="$.youtubePlay(\''
-															+ item.id.videoId
-															+ '\', \''
-															+ 'https://www.youtube.com/v/'
-															+ item.id.videoId
-															+ '?version=3&f=videos&app=youtube_gdata&autoplay=1'
-															+ '\')">'
-															+ item.snippet.title
-															+ '</a></h3>\
-                        <p>'
-															+ item.snippet.description
-															+ '</p>\
-                    </div>\
-                    <div class="youtubeOynat" id="'
-															+ item.id.videoId + '"></div>');
+													.append($.displayYoutubeResult(item))
+													.append($('<div/>', {id : item.id.videoId}));
+											
 										});
 					} else {
 						results.html('<div class="hata"><strong>' + word
@@ -88,7 +86,7 @@ $.youtubeAPI = function(word) {
 
 /* YouTube Video Playback Function */
 $.youtubePlay = function(yid, frame) {
-	$('.youtubeOynat').slideUp().empty();
+	$('.youtubePlay').slideUp().empty();
 	$('#' + yid)
 			.slideDown()
 			.html(

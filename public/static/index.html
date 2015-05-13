@@ -17,10 +17,14 @@
 <link
 	href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
 	rel="stylesheet" />
-
+<!-- JQuery UI -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css"
+	rel="stylesheet">
 <!-- Custom CSS -->
 <link href="../css/learndeploy/main.css" rel="stylesheet">
 <link href="../css/learndeploy/youtube.css" rel="stylesheet">
+<link href="../css/learndeploy/cornerbutton.css" rel="stylesheet">
 <style>
 body {
 	padding-top: 70px;
@@ -105,14 +109,30 @@ body {
 
 						<fieldset>
 							<legend>Add media</legend>
-							<p>Add new media by pasting a link in the box, and writing a
-								short description.</p>
-							<div class="control-group">
-								<div class="controls">
-									<input type="text" class="form-control input-xlarge"
-										id="youTubeId">
-									<p class="help-block">In addition to freeform text, any
-										HTML5 text-based input appears like so.</p>
+							<p>Add new media and write a short description.</p>
+							<div class="highlight">
+								<label for="youtubeId">Youtube Video ID</label>
+								<div class="input-group">
+									<input class="form-control input-xlarge" id="youtubeId">
+									<span class="input-group-btn">
+										<button id="searchYouTubeId"
+											class="btn btn-default pull-right" type="button">Search</button>
+									</span>
+								</div>
+								<p class="help-block">Or use the search box below.</p>
+								<label for="youtube">Youtube Search</label>
+								<div class="panel input-group">
+									<input id="youtube" class="form-control input-xlarge" /> <span
+										class="input-group-btn">
+										<button id="searchYouTube" class="btn btn-default pull-right"
+											type="button">Search</button>
+									</span>
+								</div>
+
+								<div id="searchResults" class="panel panel-default">
+									<div class="panel-heading">Search Results</div>
+									<div class="panel-body"></div>
+									<!--  div class="panel-footer">Panel footer</div>-->
 								</div>
 							</div>
 							<div class="control-group">
@@ -125,112 +145,170 @@ body {
 
 							<hr>
 							<div class="control-group">
-								<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+								<button class="btn btn-default">Close</button>
 								<button id="modalAddMediaBtn" class="btn btn-primary"
 									onClick="handleAddYouTubeVideo()">Add Media</button>
 							</div>
 						</fieldset>
 
+						<!--  div id="login-container" class="pre-auth">
+							This application requires access to your YouTube account. Please
+							<a href="#" id="login-link">authorize</a> to continue.
+						</div>
+						<div id="buttons" class="post-auth">
+							<label> <input id="query" value='cats' type="text" />
+								<button id="search-button" disabled onclick="search()">Search</button></label>
+						</div>
+						<div id="search-container"></div> -->
+
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div id="addMediaModalWithForm" class="modal fade" tabindex="-1"
-			role="dialog" aria-labelledby="addMediaModalLabel" aria-hidden="true"
-			style="display: none;">
+		<div id="testAddMediaModal" class="" tabindex="-1" role="dialog"
+			aria-labelledby="addMediaModalLabel">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						<form class="form-horizontal well" onsubmit="handleAddMediaForm()">
-							<fieldset>
-								<legend>Add media</legend>
-								<p>Add new media by pasting a link in the box, and writing a
-									short description.</p>
-								<div class="control-group">
-									<div class="controls">
-										<input type="text" class="form-control input-xlarge"
-											id="youTubeId">
-										<p class="help-block">In addition to freeform text, any
-											HTML5 text-based input appears like so.</p>
-									</div>
+
+						<fieldset>
+							<legend>Add media</legend>
+							<p>Add new media and write a short description.</p>
+							<div class="highlight">
+								<label for="youtubeId">Youtube Video ID</label>
+								<div class="input-group">
+									<input class="form-control input-xlarge" id="youtubeId">
+									<span class="input-group-btn">
+										<button id="searchYouTubeId"
+											class="btn btn-default pull-right" type="button">Search</button>
+									</span>
 								</div>
-								<div class="control-group">
-									<label class="control-label" for="textarea">Description</label>
-									<div class="controls">
-										<textarea class="form-control input-xlarge"
-											id="modalDescriptionTextArea" rows="3"></textarea>
-									</div>
+								<p class="help-block">Or use the search box below.</p>
+								<label for="youtube">Youtube Search</label>
+								<div class="panel input-group">
+									<input id="youtube" class="form-control input-xlarge" /> <span
+										class="input-group-btn">
+										<button id="searchYouTube" class="btn btn-default pull-right"
+											type="button">Search</button>
+									</span>
 								</div>
 
-								<hr>
-								<div class="form-actions">
-									<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-									<button class="btn btn-primary">Add Media</button>
+								<div id="searchResults" class="panel panel-default">
+									<div class="panel-heading">Search Results</div>
+									<div class="panel-body"></div>
+									<!--  div class="panel-footer">Panel footer</div>-->
 								</div>
-							</fieldset>
-						</form>
+
+
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="textarea">Description</label>
+								<div class="controls">
+									<textarea class="form-control input-xlarge"
+										id="modalDescriptionTextArea" rows="3"></textarea>
+								</div>
+							</div>
+
+							<hr>
+							<div class="control-group">
+								<button class="btn btn-default">Close</button>
+								<button id="modalAddMediaBtn" class="btn btn-primary"
+									onClick="handleAddYouTubeVideo()">Add Media</button>
+							</div>
+						</fieldset>
+
+						<!--  div id="login-container" class="pre-auth">
+              This application requires access to your YouTube account. Please
+              <a href="#" id="login-link">authorize</a> to continue.
+            </div>
+            <div id="buttons" class="post-auth">
+              <label> <input id="query" value='cats' type="text" />
+                <button id="search-button" disabled onclick="search()">Search</button></label>
+            </div>
+            <div id="search-container"></div> -->
+
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="arama">
 
-		<h2>Youtube API jQuery AutoComplete</h2>
-		<div class="ui-widget">
-			<label for="youtube">Youtube Arama: </label> <input id="youtube" />
-			<button id="submit">ARA</button>
+
+		<div class="zero-corner-btn">
+			<span class="corner-btn"> <a id="editable-toggle0"
+				href="javascript:void(0);" class=""> <i
+					class="glyphicon glyphicon-plus"></i>
+			</a>
+			</span>
 		</div>
+		<section id="cardSection0" class="hightlight well well-sm">
+			<div id="cardItems0">
 
-	</div>
+				<div class="row voffset2">
+					<div class="col-lg-12">
+						<div>
+							<a
+								href="https://trello.com/c/8WTFlwKU/16-link-to-send-task-list-to-user"
+								target="trello"
+								class="editable editable-click editable-disabled" tabindex="-1">Trello
+								Card 1: LINK TO SEND 'TASK LIST' TO USER.<br>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="row voffset2">
+					<div class="col-lg-12">
+						<div>
+							<a id="textarea0"
+								class="editable editable-pre-wrapped editable-click editable-disabled"
+								tabindex="-1"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row voffset2">
+				<div class="col-lg-12">
+					<div>
+						<a href="#addMediaModal" data-toggle="modal" data-card-id="0"
+							class="btn btn-sm btn-primary pull-right">Add new media</a>
+					</div>
+				</div>
+			</div>
+		</section>
 
-	<div id="results"></div>
+		<!-- /.container -->
 
-  <div id="login-container" class="pre-auth">
-   This application requires access to your YouTube account.
-   Please <a href="#" id="login-link">authorize</a> to continue.
-  </div>
-	<div id="buttons" class="post-auth">
-		<label> <input id="query" value='cats' type="text" />
-		<button id="search-button" disabled onclick="search()">Search</button></label>
-	</div>
-	<div id="search-container"></div>
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-	<!-- /.container -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
 
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="../js/bootstrap.min.js"></script>
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
+		<!-- Trello -->
+		<script
+			src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="../js/bootstrap.min.js"></script>
+		<!-- Youtube -->
+		<script src="../js/jQuery.tubeplayer.js"></script>
+		<script src="../js/learndeploy/auth.js"></script>
+		<script src="../js/learndeploy/search.js"></script>
+		<script
+			src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
 
-	<!-- Trello -->
-	<script
-		src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
+		<!-- Bootstrap X-editable -->
+		<script
+			src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
-	<!-- Youtube -->
-	<script src="../js/jQuery.tubeplayer.js"></script>
-  <script src="../js/learndeploy/auth.js"></script>
-  <script src="../js/learndeploy/search.js"></script>
-  <script
-    src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
-
-	<!-- Bootstrap X-editable -->
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-
-	<!-- Custom Application JS  -->
-	<script src="../js/learndeploy/index.js"></script>
-	<script src="../js/learndeploy/handlers.js"></script>
-	<script src="../js/learndeploy/youtubeSearch.js"></script>
-
+		<!-- Custom Application JS  -->
+		<script src="../js/learndeploy/index.js"></script>
+		<script src="../js/learndeploy/handlers.js"></script>
+		<script src="../js/learndeploy/youtubeSearch.js"></script>
 </body>
 
 </html>

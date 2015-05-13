@@ -62,35 +62,47 @@ var getCardCol = function(parentElement) {
 	return $cardColDiv;
 };
 
+var cornerBtnElement = function(glyphiconType, editIconId) {
+
+	var el = $('<div/>', {
+		class : 'zero-corner-btn'
+	}).append($('<span/>', {
+		class : 'corner-btn'
+	}).append($('<a/>', {
+		//class : 'btn',
+		id : editIconId,
+		href : 'javascript:void(0);'
+	}).append($('<i/>', {
+		class : 'glyphicon glyphicon-' + glyphiconType
+	}))));
+
+	return el
+}
+
 var displayCards = function(cards) {
 	$outputCards = $("#outputCards")// .empty()
 
 	$.each(cards, function(ix, card) {
 
 		var cardNum = ix + 1;
-		var $cardSection = $(
-				"<section id='cardSection" + ix + "' class='well well-sm' />")
-				.appendTo($outputCards);
-
-		var $cardItems = $("<div/>", {
-			"id" : "cardItems" + ix
-		}).appendTo($cardSection);
 
 		// Add editable icon
-		var editIconDiv = getCardCol($cardItems);
 		var editIconId = "editable-toggle" + ix
-		var $editIcon = $("<a>").attr({
-			"id" : editIconId,
-			"href" : "javascript:void(0);",
-			"class" : "btn btn-default pull-right",
-		}).append($("<i>").attr({
-			"class" : "glyphicon glyphicon-edit"
-		})).appendTo(editIconDiv);
+		var editIconDiv = cornerBtnElement('edit', editIconId);
+		editIconDiv.appendTo($outputCards);
 
 		// enable / disable editing for
 		$("#editable-toggle" + ix).click(function() {
 			$("#cardSection" + ix + " .editable").editable('toggleDisabled');
 		});
+
+		var $cardSection = $(
+				"<section id='cardSection" + ix
+						+ "' class='hightlight well well-sm' />").appendTo($outputCards);
+
+		var $cardItems = $("<div/>", {
+			"id" : "cardItems" + ix
+		}).appendTo($cardSection);
 
 		// Add card title
 		var cardTitleDiv = getCardCol($cardItems);
@@ -218,5 +230,5 @@ $("#disconnect").click(logout);
 $(document).ready(function() {
 	// toggle `popup` / `inline` mode
 	$.fn.editable.defaults.mode = 'inline';
-	
+
 });
