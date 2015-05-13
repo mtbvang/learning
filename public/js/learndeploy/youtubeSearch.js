@@ -39,12 +39,12 @@ $("#youtube")
 $('button#searchYoutube').click(function() {
 	var q = $('input#youtube').val();
 	if(q) {
-		console.log("Searching for videos: " + q);
+		//console.log("Searching for videos: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + q
 		+ '&maxResults=3&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		console.log("Empty youtube search value.");
+		//console.log("Empty youtube search value.");
 	}
 });
 
@@ -52,12 +52,12 @@ $('button#searchYoutube').click(function() {
 $('button#searchYoutubeVideoId').click(function() {
 	var q = $('input#youtubeVideoId').val();
 	if(q) {
-		console.log("Searching for video id: " + q);
+		//console.log("Searching for video id: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + q
 		+ '&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		console.log("Empty youtube search value.");
+		//console.log("Empty youtube search value.");
 	}
 	
 });
@@ -87,7 +87,7 @@ $.youtubeAPISearch = function(id, searchURL) {
 				url : searchURL,
 				dataType : 'jsonp',
 				success : function(response) {
-					// console.log("response: " + JSON.stringify(response.items, null,
+					// //console.log("response: " + JSON.stringify(response.items, null,
 					// 4));
 					if (response.items) {
 						results.empty();						
@@ -96,7 +96,7 @@ $.youtubeAPISearch = function(id, searchURL) {
 										response.items,
 										function(i, item) {
 											results
-													.append(cornerBtnElement('plus', 'addYoutube' + i))
+													.append(cornerBtnElement('plus', 'addYoutube-' + (item.id.videoId ? item.id.videoId : item.id)))
 													.append($.displayYoutubeResult(item))
 													.append($('<div/>', {id : (item.id.videoId ? item.id.videoId : item.id)}));
 											

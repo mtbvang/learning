@@ -117,7 +117,7 @@ body {
 									<span class="input-group-btn">
 										<button id="searchYoutubeVideoId"
 											class="btn btn-default pull-right" type="button"
-											onclick="handleAddYouTubeVideo()">Add</button>
+											onclick="addYouTubeVideo()">Search</button>
 									</span>
 								</div>
 								<p class="help-block">Or use the search box below.</p>
@@ -148,7 +148,7 @@ body {
 							<div class="control-group">
 								<button class="btn btn-default" onClick="closeAddMediaModal()">Close</button>
 								<button id="modalAddMediaBtn" class="btn btn-primary"
-									onClick="handleAddYouTubeVideo()">Add Media</button>
+									onClick="addMediaToCard()">Add Media</button>
 							</div>
 						</fieldset>
 
@@ -183,12 +183,13 @@ body {
 
 		<!-- Bootstrap X-editable -->
 		<script
-			src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+			src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
 		<!-- Custom Application JS  -->
 		<script src="../js/learndeploy/index.js"></script>
 		<script src="../js/learndeploy/handlers.js"></script>
 		<script src="../js/learndeploy/youtubeSearch.js"></script>
+		<script src="../js/learndeploy/buttons.js"></script>
 </body>
 
 </html>

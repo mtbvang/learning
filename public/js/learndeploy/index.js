@@ -12,6 +12,15 @@ The &dummy=.js part of the managed resource URL is required per http://doc.jsfid
 
 var setNewYouTubeMedia = new Set();
 	
+$('#addMediaModal').on('hidden.bs.modal', function (e) {
+  $(this)
+    .find("input,textarea,select")
+       .val('')
+       .end()
+    .find("input[type=checkbox], input[type=radio]")
+       .prop("checked", "")
+       .end();
+});
 
 var listMemberCards = function() {
 	Trello.members.get("me", function(member) {
@@ -43,10 +52,10 @@ var listMemberCards = function() {
 			$("<div>").text("Click a board to import it").appendTo($boards);
 
 			$.each(boards, function(ix, board) {
-				console.log("board name: " + board.name)
+				//console.log("board name: " + board.name)
 				$("<a>").addClass("board").text(board.name).appendTo($boards).click(
 						function() {
-							console.log("clicked board " + board.name)
+							//console.log("clicked board " + board.name)
 
 						})
 			});
@@ -64,23 +73,6 @@ var getCardCol = function(parentElement) {
 
 	return $cardColDiv;
 };
-
-var cornerBtnElement = function(glyphiconType, linkId) {
-
-	var el = $('<div/>', {
-		class : 'zero-corner-btn'
-	}).append($('<span/>', {
-		class : 'corner-btn'
-	}).append($('<a/>', {
-		//class : 'btn',
-		id : linkId,
-		href : 'javascript:void(0);'
-	}).append($('<i/>', {
-		class : 'glyphicon glyphicon-' + glyphiconType
-	}))));
-
-	return el
-}
 
 var displayCards = function(cards) {
 	$outputCards = $("#outputCards")// .empty()
@@ -145,9 +137,9 @@ var displayCards = function(cards) {
 		// Add cardId to modal so we an add media back to the correct card.
 		$("#addMediaModal").on("show.bs.modal", function(e) {
 			var cardId = $(e.relatedTarget).data('card-id');
-			console.log("cardId: " + cardId);
+			//console.log("cardId: " + cardId);
 			$(e.currentTarget).data("cardId", cardId);
-			// console.log("addMediaModal.data: " +
+			// //console.log("addMediaModal.data: " +
 			// $(e.currentTarget).data("cardId"));
 		});
 
@@ -164,7 +156,7 @@ var displayCardsForBoard = function() {
 
 	// Output all of the cards for the selected board.
 	var resource = "boards/" + selectedBoard + "/cards";
-	console.log("resource: " + resource);
+	//console.log("resource: " + resource);
 	Trello.get(resource, displayCards);
 }
 
