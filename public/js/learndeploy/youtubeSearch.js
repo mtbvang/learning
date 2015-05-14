@@ -1,11 +1,13 @@
+// This file based on Codepen example http://codepen.io/tayfunerbilen/pen/rIHvD
+
 var gapiKey = 'AIzaSyAnLqIk7Olo7hT1L8GAcM0Icc6sbj1SCqI';
 
 /* AutoComplete */
-$("#youtube")
+$("#searchYoutubeInput")
 		.autocomplete(
 				{
 					source : function(request, response) {
-						/* Google developer ID (not mandatory) */
+						/* Google developer ID */
 						var gapiKey = 'AIzaSyAnLqIk7Olo7hT1L8GAcM0Icc6sbj1SCqI';
 						/* Search terms */
 						var query = request.term;
@@ -36,31 +38,46 @@ $("#youtube")
 				});
 
 /* Search button */
-$('button#searchYoutube').click(function() {
-	var q = $('input#youtube').val();
+$('button#searchYoutubeBtn').click(function() {
+	var q = $('input#searchYoutubeInput').val();
 	if(q) {
 		// console.log("Searching for videos: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + q
 		+ '&maxResults=3&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		// console.log("Empty youtube search value.");
+		console.log("Empty youtube search value.");
 	}
 });
 
+// Search input
+$("#searchYoutubeInput").keyup(function(event){
+  if(event.keyCode == 13){
+      $("#searchYoutubeBtn").click();
+  }
+});
+
 /* Search by id button */
-$('button#searchYoutubeVideoId').click(function() {
-	var q = $('input#youtubeVideoId').val();
+$('button#searchYoutubeByIdBtn').click(function() {
+	var q = $('input#searchYoutubeByIdInput').val();
 	if(q) {
-		// console.log("Searching for video id: " + q);
+		console.log("Searching for video id: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + q
 		+ '&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		// console.log("Empty youtube search value.");
+		console.log("Empty youtube search value.");
 	}
 	
 });
+
+// Search by id input
+$("#searchYoutubeByIdInput").keyup(function(event){
+  if(event.keyCode == 13){
+      $("#searchYoutubeByIdBtn").click();
+  }
+});
+
 
 $.displayYoutubeResult = function(item) {
 	var videoId = item.id.videoId ? item.id.videoId : item.id;
@@ -83,7 +100,7 @@ $.youtubeAPISearch = function(id, searchURL) {
 	$
 			.ajax({
 				type : 'GET',
-				// https://www.googleapis.com/youtube/v3/videos?part=snippet&id=mh45igK4Esw&key={YOUR_API_KEY}
+				// searchURL of form	https://www.googleapis.com/youtube/v3/videos?part=snippet&id=mh45igK4Esw&key={YOUR_API_KEY}
 				url : searchURL,
 				dataType : 'jsonp',
 				success : function(response) {
@@ -112,7 +129,6 @@ $.youtubeAPISearch = function(id, searchURL) {
 			});
 }
 
-https:// www.googleapis.com/youtube/v3/videos?part=snippet&id=mh45igK4Esw&key={YOUR_API_KEY}
 
 /* YouTube Video Playback Function */
 $.youtubePlay = function(yid, frame) {

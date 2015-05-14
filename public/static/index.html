@@ -14,13 +14,10 @@
 <!-- Bootstrap Core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- Boostrap X-editable -->
-<link
-	href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
 	rel="stylesheet" />
 <!-- JQuery UI -->
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css"
-	rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
 <!-- Custom CSS -->
 <link href="../css/learndeploy/main.css" rel="stylesheet">
 <link href="../css/learndeploy/youtube.css" rel="stylesheet">
@@ -48,17 +45,14 @@ body {
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">Learn Deploy</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="#">Menu 1</a></li>
 					<li><a href="#">Menu 2</a></li>
@@ -79,16 +73,13 @@ body {
 				<h1>LearnDeploy</h1>
 				<div id="loggedout">
 					<p>Welcome to Learn/Deploy</p>
-					<p>To get started, you need to connect to Trello and import
-						your board.</p>
-					<a id="connectLink" class="btn btn-primary" href="#">Connect to
-						Trello</a>
+					<p>To get started, you need to connect to Trello and import your board.</p>
+					<a id="connectLink" class="btn btn-primary" href="#">Connect to Trello</a>
 				</div>
 
 				<div id="loggedin">
 					<div id="header">
-						Logged in to Trello as <span id="fullName"></span> <a
-							id="disconnect" href="#">Log Out</a>
+						Logged in to Trello as <span id="fullName"></span> <a id="disconnect" href="#">Log Out</a>
 					</div>
 					<p>Great!</p>
 					<p>Now let's import the board you want to work on!</p>
@@ -100,9 +91,8 @@ body {
 		</div>
 		<!-- /.row -->
 
-		<div id="addMediaModal" class="modal fade" tabindex="-1" role="dialog"
-			aria-labelledby="addMediaModalLabel" aria-hidden="true"
-			style="display: none;">
+		<div id="addMediaModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addMediaModalLabel"
+			aria-hidden="true" style="display: none;">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
@@ -113,20 +103,15 @@ body {
 							<div class="highlight">
 								<label for="youtubeVideoId">Youtube Video ID</label>
 								<div class="input-group">
-									<input class="form-control input-xlarge" id="youtubeVideoId">
-									<span class="input-group-btn">
-										<button id="searchYoutubeVideoId"
-											class="btn btn-default pull-right" type="button"
-											onclick="addYouTubeVideo()">Search</button>
+									<input class="form-control input-xlarge" id="searchYoutubeByIdInput"> <span class="input-group-btn">
+										<button id="searchYoutubeByIdBtn" class="btn btn-default pull-right" type="button" >Search</button>
 									</span>
 								</div>
 								<p class="help-block">Or use the search box below.</p>
 								<label for="youtube">Youtube Search</label>
 								<div class="panel input-group">
-									<input id="youtube" class="form-control input-xlarge" /> <span
-										class="input-group-btn">
-										<button id="searchYoutube" class="btn btn-default pull-right"
-											type="button">Search</button>
+									<input id="searchYoutubeInput" class="form-control input-xlarge" /> <span class="input-group-btn">
+										<button id="searchYoutubeBtn" class="btn btn-default pull-right" type="button">Search</button>
 									</span>
 								</div>
 
@@ -139,16 +124,15 @@ body {
 							<div class="control-group">
 								<label class="control-label" for="textarea">Description</label>
 								<div class="controls">
-									<textarea class="form-control input-xlarge"
-										id="modalDescriptionTextArea" rows="3"></textarea>
+									<textarea class="form-control input-xlarge" id="modalDescriptionTextArea" rows="3"></textarea>
 								</div>
 							</div>
 
 							<hr>
 							<div class="control-group">
-								<button class="btn btn-default" onClick="closeAddMediaModal()">Close</button>
-								<button id="modalAddMediaBtn" class="btn btn-primary"
-									onClick="addMediaToCard2()">Add Media</button>
+								<button type="button" class="btn btn-default" onClick="closeAddMediaModal()">Close</button>
+								<button type="button" id="modalAddMediaBtn" class="btn btn-primary" onClick="addMediaToCard2()">Add
+									Media</button>
 							</div>
 						</fieldset>
 
@@ -161,29 +145,24 @@ body {
 
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="../js/bootstrap.min.js"></script>
 
 		<!-- Trello -->
-		<script
-			src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
+		<script src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
 
 		<!-- Youtube -->
 		<script src="../js/jQuery.tubeplayer.js"></script>
 		<script src="../js/learndeploy/auth.js"></script>
 		<script src="../js/learndeploy/search.js"></script>
-		<script
-			src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
+		<script src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
 
 		<!-- Bootstrap X-editable -->
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
 		<!-- Custom Application JS  -->
 		<script src="../js/learndeploy/trello.js"></script>
