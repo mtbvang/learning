@@ -151,8 +151,8 @@ var displayCardsForBoard = function() {
 	var boardName = $("#boards option[value='" + selectedBoard + "']").text();
 	// Clear outputCards to only show select board's cards.
 	$("#outputCards").empty();
-	var $cards = $("<div>").text("List: " + boardName).appendTo("#outputCards");
-	var $cards = $("<div>").text("Tasks").appendTo("#outputCards");
+	var $cards = $("<h2>").text("Trello Board: " + boardName).appendTo("#outputCards");
+	var $cards = $("<h3>").text("Tasks").appendTo("#outputCards");
 
 	// Output all of the cards for the selected board.
 	var resource = "boards/" + selectedBoard + "/cards";
