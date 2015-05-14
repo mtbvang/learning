@@ -11,7 +11,7 @@ var addMediaToCard = function() {
 	if (setNewYouTubeMedia.size > 0) {
 		console.log("Adding video to card. setNewYouTubeMedia.size: " + setNewYouTubeMedia.size);
 		var cardColYouTubeVideo = getCardCol($cardItems);
-		
+
 		// Add all selected videos to card.
 		setNewYouTubeMedia.forEach(function(id, id2, set) {
 			// console.log("Inside anonymous function. $cardItems:" +
@@ -67,6 +67,54 @@ var addMediaToCard = function() {
 
 }
 
+var addMediaToCard2 = function() {
+	$outputCards = $("#outputCards")
+
+	// Get card id in modal
+	var cardId = $("#addMediaModal").data("cardId");
+	// console.log("handleAddMedia called with cardId: " + cardId);
+
+	// Embed youtube video after trello card textarea.
+	var $cardItems = $("#cardItems" + cardId)
+
+	if (setNewYouTubeMedia.size > 0) {
+		console.log("Adding video to card. setNewYouTubeMedia.size: " + setNewYouTubeMedia.size);
+		var cardColYouTubeVideo = getCardCol($cardItems);
+
+		// Add all selected videos to card.
+		setNewYouTubeMedia.forEach(function(videoDiv, videoDiv2, set) {
+			// console.log("Inside anonymous function. $cardItems:" +
+			// $cardItems.toString());
+
+			videoDiv.appendTo(cardColYouTubeVideo);
+		});
+
+	}
+
+	if ($("#modalDescriptionTextArea").val()) {
+		// Add youtube video description
+		var $textArea = $("<a/>", {
+			"id" : "textarea" + cardId,
+		}).text($("#modalDescriptionTextArea").val()).appendTo(cardColYouTubeVideo);
+		$textArea.autosize();
+
+		// $("#modalDescriptionTextArea").autosize();
+
+		// make outputcards editable
+		$textArea.editable({
+			type : "textarea",
+			placeholder : "Youtube video description",
+			title : "Youtube video description",
+		});
+		$textArea.editable("disable", true);
+	}
+
+	closeAddMediaModal();
+
+	$('#addMediaModal').modal('toggle');
+
+}
+
 var closeAddMediaModal = function() {
 	// clear all data associated with modal.
 	setNewYouTubeMedia.clear();
@@ -76,10 +124,24 @@ var closeAddMediaModal = function() {
 	$('#addMediaModal').modal('toggle');
 }
 
+var removeYoutubeVideoFromCard = function(id) {
+	console.log("removeYoutubeVideoFromCard entered. id: " + id);
+	$("#" + id).remove();
+}
+
 var addYouTubeVideo = function(id) {
 
 	if (id) {
-		setNewYouTubeMedia.add(id);
+		var video = $("#searchResults .panel-body #" + id);
+		// change corner button to remove glyphicon
+
+		// <span class="btn corner-btn" onclick="return
+		// addYouTubeVideo('TK9oS7HS3Ng');">
+		// <a id="addYoutube-TK9oS7HS3Ng" href="javascript:void(0);"><i
+		// class="glyphicon glyphicon-plus"></i></a></span>
+		video.find("span").attr("onclick", "return removeYoutubeVideoFromCard('" + id + "');");
+		video.find("i").attr("class", "glyphicon glyphicon-minus");
+		setNewYouTubeMedia.add(video);
 		console.log("Adding " + $("#youtubeVideoId").val() + " to setNewYouTubeMedia of size: " + setNewYouTubeMedia.size);
 	} else {
 		console.log("Empty youtube videoid: " + id);

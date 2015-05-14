@@ -39,12 +39,12 @@ $("#youtube")
 $('button#searchYoutube').click(function() {
 	var q = $('input#youtube').val();
 	if(q) {
-		//console.log("Searching for videos: " + q);
+		// console.log("Searching for videos: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + q
 		+ '&maxResults=3&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		//console.log("Empty youtube search value.");
+		// console.log("Empty youtube search value.");
 	}
 });
 
@@ -52,12 +52,12 @@ $('button#searchYoutube').click(function() {
 $('button#searchYoutubeVideoId').click(function() {
 	var q = $('input#youtubeVideoId').val();
 	if(q) {
-		//console.log("Searching for video id: " + q);
+		// console.log("Searching for video id: " + q);
 		var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet&id=' + q
 		+ '&key=' + gapiKey;
 		$.youtubeAPISearch(q, url);
 	} else {
-		//console.log("Empty youtube search value.");
+		// console.log("Empty youtube search value.");
 	}
 	
 });
@@ -69,7 +69,7 @@ $.displayYoutubeResult = function(item) {
 		.append($('<h3/>')
 				.append($('<a/>', 
 						{ href : 'javascript:void(0)', 
-							onclick : "$.youtubePlay('" + videoId + "', 'https://www.youtube.com/v/" + videoId + "?version=3&amp;f=videos&amp;app=youtube_gdata&amp;autoplay=1')"}).html(item.snippet.title)))
+							onclick : "$.youtubePlay('" + videoId + "', 'https://www.youtube.com/v/" + videoId + "?version=3&amp;f=videos&amp;app=youtube_gdata&amp;autoplay=0')"}).html(item.snippet.title)))
 		.append($('<p/>').html(item.snippet.description));
 	return result;
 }
@@ -96,9 +96,12 @@ $.youtubeAPISearch = function(id, searchURL) {
 										response.items,
 										function(i, item) {
 											results
-													.append(cornerBtnElement('plus', 'addYoutube-' + (item.id.videoId ? item.id.videoId : item.id)))
-													.append($.displayYoutubeResult(item))
-													.append($('<div/>', {id : (item.id.videoId ? item.id.videoId : item.id)}));
+													.append($('<div/>', {id : (item.id.videoId ? item.id.videoId : item.id)})
+															.append(cornerBtnElement('plus', 'addYoutube-' + (item.id.videoId ? item.id.videoId : item.id)))
+															.append($.displayYoutubeResult(item))
+															.append($('<div/>', {id : "slidedown-" + (item.id.videoId ? item.id.videoId : item.id)}))
+													);
+																										
 											
 										});
 					} else {
@@ -114,10 +117,26 @@ https:// www.googleapis.com/youtube/v3/videos?part=snippet&id=mh45igK4Esw&key={Y
 /* YouTube Video Playback Function */
 $.youtubePlay = function(yid, frame) {
 	$('.youtubePlay').slideUp().empty();
-	$('#' + yid)
-			.slideDown()
-			.html(
-					'<iframe src="'
-							+ frame
-							+ '" style="width: 100%; box-sizing: border-box; height: 300px" />');
+	var slidedown = $('#slidedown-' + yid)
+			.slideToggle();
+	
+	// Display video in slidedown using jQuery TubePlayer Plugin.
+	slidedown.tubeplayer({
+		width : '100%', // the width of the player
+		height : '300px', // the height of the player
+		allowFullScreen : "true", // true by default, allow user to go full
+		// screen
+		initialVideo : yid, // the video that is loaded into the player
+		preferredQuality : "default",// preferred quality: default, small,
+		// medium, large, hd720
+		onPlay : function(id) {}, // after the play method is called
+		onPause : function() {}, // after the pause method is called
+		onStop : function() {}, // after the player is stopped
+		onSeek : function(time) {}, // after the video has been seeked to a
+		// defined
+		// point
+		onMute : function() {}, // after the player is muted
+		onUnMute : function() {} // after the player is unmuted
+	});
+
 }

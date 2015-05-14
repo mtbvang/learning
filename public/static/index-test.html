@@ -66,538 +66,119 @@ body {
 	</nav>
 
 	<!-- Page Content -->
-	<div class="container" id="outputCards">
-		<div>List: Learn-x Development</div>
-		<div>Tasks</div>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle0');"><a id="editable-toggle0"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection0" class="hightlight well well-sm">
-			<div id="cardItems0">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/8WTFlwKU/16-link-to-send-task-list-to-user" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 1: LINK TO SEND 'TASK LIST' TO
-								USER.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea0" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<div id="card0-yKORsrlN-2k" class="jquery-youtube-tubeplayer">
-								<iframe id="tubeplayer-player-container-f02c7801-eff5-4d15-9cee-c937097c6bb8" frameborder="0"
-									allowfullscreen="1" title="YouTube video player" width="100%" height="50%"
-									src="https://www.youtube.com/embed/yKORsrlN-2k?autoplay=0&amp;autohide=1&amp;controls=1&amp;loop=0&amp;playlist&amp;rel=0&amp;fs=1&amp;wmode=transparent&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=1&amp;start=0&amp;theme=dark&amp;color=red&amp;playsinline=false&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A3002"></iframe>
+	<div id="addMediaModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="addMediaModalLabel"
+		aria-hidden="false" style="display: block; padding-right: 15px;">
+		<div class="modal-backdrop fade in" style="height: 1047px;"></div>
+		<div class="modal-backdrop fade in" style="height: 1047px;"></div>
+		<div class="modal-backdrop fade in" style="height: 1047px;"></div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					<fieldset>
+						<legend>Add media</legend>
+						<p>Add new media and write a short description.</p>
+						<div class="highlight">
+							<label for="youtubeVideoId">Youtube Video ID</label>
+							<div class="input-group">
+								<input class="form-control input-xlarge" id="youtubeVideoId"> <span class="input-group-btn">
+									<button id="searchYoutubeVideoId" class="btn btn-default pull-right" type="button" onclick="addYouTubeVideo()">Search</button>
+								</span>
 							</div>
-							<div id="card0-mh45igK4Esw" class="jquery-youtube-tubeplayer">
-								<iframe id="tubeplayer-player-container-c83c8ca3-9a6a-401f-9dae-51ee4768e4c7" frameborder="0"
-									allowfullscreen="1" title="YouTube video player" width="100%" height="50%"
-									src="https://www.youtube.com/embed/mh45igK4Esw?autoplay=0&amp;autohide=1&amp;controls=1&amp;loop=0&amp;playlist&amp;rel=0&amp;fs=1&amp;wmode=transparent&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=1&amp;start=0&amp;theme=dark&amp;color=red&amp;playsinline=false&amp;enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A3002"></iframe>
+							<p class="help-block">Or use the search box below.</p>
+							<label for="youtube">Youtube Search</label>
+							<div class="panel input-group">
+								<input id="youtube" class="form-control input-xlarge ui-autocomplete-input" autocomplete="off"> <span
+									class="input-group-btn">
+									<button id="searchYoutube" class="btn btn-default pull-right" type="button">Search</button>
+								</span>
+							</div>
+
+							<div id="searchResults" class="panel panel-default">
+								<div class="panel-heading">Search Results</div>
+								<div class="panel-body">
+								  <div id="yKORsrlN-2k">
+										<div class="zero-corner-btn">
+											<span class="btn corner-btn" onclick="return addYouTubeVideo('yKORsrlN-2k');"><a
+												id="addYoutube-yKORsrlN-2k" href="javascript:void(0);"><i class="glyphicon glyphicon-plus"></i></a></span>
+										</div>
+										<div class="hightlight youtube">
+											<img src="https://i.ytimg.com/vi/yKORsrlN-2k/default.jpg">
+											<h3>
+												<a href="javascript:void(0)"
+													onclick="$.youtubePlay('yKORsrlN-2k', 'https://www.youtube.com/v/yKORsrlN-2k?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">Elon
+													Musk Debuts the Tesla Powerwall</a>
+											</h3>
+											<p>Tesla Powerwall Keynote by Elon Musk "The Missing Piece" English and Spanish subtitles added, credit to
+												Luis Gámez for transcribing and translating.</p>
+										</div>
+									</div>
+									<div class="zero-corner-btn">
+										<span class="btn corner-btn" onclick="return addYouTubeVideo('mh45igK4Esw');"><a
+											id="addYoutube-mh45igK4Esw" href="javascript:void(0);"><i class="glyphicon glyphicon-plus"></i></a></span>
+									</div>
+									<div class="hightlight youtube">
+										<img src="https://i.ytimg.com/vi/mh45igK4Esw/default.jpg">
+										<h3>
+											<a href="javascript:void(0)"
+												onclick="$.youtubePlay('mh45igK4Esw', 'https://www.youtube.com/v/mh45igK4Esw?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">Elon
+												Musk: How I Became The Real 'Iron Man'</a>
+										</h3>
+										<p>Aug. 3 (Bloomberg) -- "Bloomberg Risk Takers" profiles Elon Musk, the entrepreneur who helped create
+											PayPal, built America's first viable fully electric car ...</p>
+									</div>
+									<div id="mh45igK4Esw"></div>
+									<div class="zero-corner-btn">
+										<span class="btn corner-btn" onclick="return addYouTubeVideo('TK9oS7HS3Ng');"><a
+											id="addYoutube-TK9oS7HS3Ng" href="javascript:void(0);"><i class="glyphicon glyphicon-plus"></i></a></span>
+									</div>
+									<div class="hightlight youtube">
+										<img src="https://i.ytimg.com/vi/TK9oS7HS3Ng/default.jpg">
+										<h3>
+											<a href="javascript:void(0)"
+												onclick="$.youtubePlay('TK9oS7HS3Ng', 'https://www.youtube.com/v/TK9oS7HS3Ng?version=3&amp;amp;f=videos&amp;amp;app=youtube_gdata&amp;amp;autoplay=1')">Elon
+												Musk in Detroit, the lions den (2015)</a>
+										</h3>
+										<p>Elon Musk speaks at the Automotive News World Congress in Detroit about prospects for electric vehicles
+											and transportation, the timing of the release of Tesla's ...</p>
+									</div>
+									<div id="TK9oS7HS3Ng"></div>
+								</div>
+								<!--  div class="panel-footer">Panel footer</div>-->
 							</div>
 						</div>
-					</div>
+						<div class="control-group">
+							<label class="control-label" for="textarea">Description</label>
+							<div class="controls">
+								<textarea class="form-control input-xlarge" id="modalDescriptionTextArea" rows="3"></textarea>
+							</div>
+						</div>
+
+						<hr>
+						<div class="control-group">
+							<button class="btn btn-default" onclick="closeAddMediaModal()">Close</button>
+							<button id="modalAddMediaBtn" class="btn btn-primary" onclick="addMediaToCard()">Add Media</button>
+						</div>
+					</fieldset>
+
 				</div>
 			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="0" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle1');"><a id="editable-toggle1"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
 		</div>
-		<section id="cardSection1" class="hightlight well well-sm">
-			<div id="cardItems1">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/HBWSE8AY/18-task-completion-synchronization-between-trello-and-learndeploy"
-								target="trello" class="editable editable-click editable-disabled" tabindex="-1">Trello Card 2: TASK
-								COMPLETION SYNCHRONIZATION BETWEEN TRELLO AND LEARNDEPLOY<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea1" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">This
-								seems difficult because there is no standard way in Trello to indicate task completion so how do you check for
-								this from LearnDeploy. Users completion of tasks on external platforms can be queried and aggregated on LD. Auto
-								updating of PM tools like Trello requires that a standard task completion mechanism exist, which Trello doesn't
-								SEEM to have???</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="1" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle2');"><a id="editable-toggle2"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection2" class="hightlight well well-sm">
-			<div id="cardItems2">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a
-								href="https://trello.com/c/YYMaTmf2/10-0-5-create-template-trello-board-to-be-used-to-manage-playbook-task-list"
-								target="trello" class="editable editable-click editable-disabled" tabindex="-1">Trello Card 3: (0.5) CREATE
-								TEMPLATE TRELLO BOARD TO BE USED TO MANAGE PLAYBOOK 'TASK LIST'<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea2" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">I
-								think the users needs to start in LearnDeploy because they need to be told about and how to create the Trello
-								tasklist. If it's new onboard they might not even know Trello. Task breakdown; - Create template trello board to
-								be used to manage Playbook 'task list'. </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="2" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle3');"><a id="editable-toggle3"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection3" class="hightlight well well-sm">
-			<div id="cardItems3">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/YUCoeHHl/20-5-manager-adds-media-url-add-link-button-to-add-media" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 4: (5) MANAGER ADDS MEDIA: URL.
-								ADD LINK/BUTTON TO ADD MEDIA.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea3" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">User
-								is presented with list of possible media to add. They select google drive and are then presented with a select
-								search box to simple search for the peice of media that they can select. This is too simple. The UI interaction
-								needs to be thought out. How is a doc queried over the api? By name? Task break down: - Assume correct media is
-								select from possible media list. - Add search box to page. - Query google drive API. - Add selected google drive
-								doc to page.</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="3" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle4');"><a id="editable-toggle4"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection4" class="hightlight well well-sm">
-			<div id="cardItems4">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/AdvdG2NW/12-5-manager-adds-media-google-drive-add-link-button-to-add-media"
-								target="trello" class="editable editable-click editable-disabled" tabindex="-1">Trello Card 5: (5) MANAGER
-								ADDS MEDIA: GOOGLE DRIVE. ADD LINK/BUTTON TO ADD MEDIA.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea4" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">User
-								is presented with list of possible media to add. They select google drive and are then presented with a select
-								search box to simple search for the peice of media that they can select. This is too simple. The UI interaction
-								needs to be thought out. How is a doc queried over the api? By name? Task break down: - Assume correct media is
-								select from possible media list. - Add search box to page. - Query google drive API. - Add selected google drive
-								doc to page.</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="4" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle5');"><a id="editable-toggle5"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection5" class="hightlight well well-sm">
-			<div id="cardItems5">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/dNKnq3f3/15-3-text-description-for-task-add-link-button" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 6: (3) TEXT DESCRIPTION FOR
-								TASK. ADD LINK BUTTON.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea5" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">Unsure
-								about how this is used in conjunction with content in doc on google docs and if they use a learning platform
-								such as Learnist. If there are multiple steps in the task then these text boxes act as poly fill to link the
-								different media. Task breakdown is based on the simple idea that Task breakdown: - Link to add text area to
-								task. - Save text. </a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="5" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle6');"><a id="editable-toggle6"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection6" class="hightlight well well-sm">
-			<div id="cardItems6">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/pMrAesAP/19-5-manager-adds-media-youtube-add-link-button-to-add-youtube-media"
-								target="trello" class="editable editable-click editable-disabled" tabindex="-1">Trello Card 7: (5) MANAGER
-								ADDS MEDIA: YOUTUBE. ADD LINK/BUTTON TO ADD YOUTUBE MEDIA.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea6" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">User
-								is presented with list of possible media to add. They select youtube and are then presented with a select search
-								box to simple search for a youtube clip that they can select. This is too simple. The UI interaction needs to be
-								thought out.</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="6" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle7');"><a id="editable-toggle7"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection7" class="hightlight well well-sm">
-			<div id="cardItems7">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/EfJ9lTa3/11-13-manager-opens-learndeploy-and-adds-task-list-8" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 8: (13) MANAGER OPENS
-								LEARNDEPLOY AND ADDS TASK LIST. [8]<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea7" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="7" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle8');"><a id="editable-toggle8"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection8" class="hightlight well well-sm">
-			<div id="cardItems8">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/f5RevhBN/2-mvp-f-wireframes" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 9: MVP-F WIREFRAMES<br></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea8" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">
-								DependsOn(RHn2K7iF) DependsOn(2pRQkjJ3) DependsOn(dHYlMksV)</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="8" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('ble-toggle9');"><a id="editable-toggle9"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection9" class="hightlight well well-sm">
-			<div id="cardItems9">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/dHYlMksV/5-learndeploy-pitch" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 10: LEARNDEPLOY PITCH<br></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea9" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="9" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('le-toggle10');"><a id="editable-toggle10"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection10" class="hightlight well well-sm">
-			<div id="cardItems10">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/czCwj89A/6-learndeploy-dummy-screens" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 11: LEARNDEPLOY DUMMY SCREENS<br></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea10" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="10" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('le-toggle11');"><a id="editable-toggle11"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection11" class="hightlight well well-sm">
-			<div id="cardItems11">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/2pRQkjJ3/1-mvp-f-interaction-flow" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 12: MVP-F INTERACTION FLOW<br></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea11" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1">The
-								truly Minimal Product</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="11" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('le-toggle12');"><a id="editable-toggle12"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection12" class="hightlight well well-sm">
-			<div id="cardItems12">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/RHn2K7iF/7-mvp-f-description" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 13: MVP-F DESCRIPTION<br></a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea12" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="12" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('le-toggle13');"><a id="editable-toggle13"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection13" class="hightlight well well-sm">
-			<div id="cardItems13">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/vrgUD9mG/4-2-learndeploy-dummy-website" target="trello"
-								class="editable editable-click editable-disabled" tabindex="-1">Trello Card 14: (2) LEARNDEPLOY DUMMY
-								WEBSITE<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea13" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="13" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
-		<div class="zero-corner-btn">
-			<span class="btn corner-btn" onclick="return addYouTubeVideo('le-toggle14');"><a id="editable-toggle14"
-				href="javascript:void(0);"><i class="glyphicon glyphicon-edit"></i></a></span>
-		</div>
-		<section id="cardSection14" class="hightlight well well-sm">
-			<div id="cardItems14">
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a href="https://trello.com/c/h0CuYH3q/9-2-add-bootstrap-and-choose-a-bootstrap-template-and-add-both-to-project"
-								target="trello" class="editable editable-click editable-disabled" tabindex="-1">Trello Card 15: (2) ADD
-								BOOTSTRAP AND CHOOSE A BOOTSTRAP TEMPLATE AND ADD BOTH TO PROJECT.<br>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="row voffset2">
-					<div class="col-lg-12">
-						<div>
-							<a id="textarea14" class="editable editable-pre-wrapped editable-click editable-disabled" tabindex="-1"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row voffset2">
-				<div class="col-lg-12">
-					<div>
-						<a href="#addMediaModal" data-toggle="modal" data-card-id="14" class="btn btn-sm btn-primary pull-right">Add
-							new media</a>
-					</div>
-				</div>
-			</div>
-		</section>
+		<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
+			style="display: none; top: 291px; left: 216px; width: 466px;">
+			<li class="ui-menu-item" id="ui-id-52" tabindex="-1">elon musk</li>
+			<li class="ui-menu-item" id="ui-id-53" tabindex="-1">elon musk interview</li>
+			<li class="ui-menu-item" id="ui-id-54" tabindex="-1">elon musk 2015</li>
+			<li class="ui-menu-item" id="ui-id-55" tabindex="-1">elon musk 60 minutes</li>
+			<li class="ui-menu-item" id="ui-id-56" tabindex="-1">elon musk documentary</li>
+			<li class="ui-menu-item" id="ui-id-57" tabindex="-1">elon musk hyperloop</li>
+			<li class="ui-menu-item" id="ui-id-58" tabindex="-1">elon musk ted</li>
+			<li class="ui-menu-item" id="ui-id-59" tabindex="-1">elon musk artificial intelligence</li>
+			<li class="ui-menu-item" id="ui-id-60" tabindex="-1">elon musk spacex</li>
+			<li class="ui-menu-item" id="ui-id-61" tabindex="-1">elon musk tesla</li>
+		</ul>
 	</div>
+
 	<!-- /.container -->
 
 	<!-- jQuery -->
