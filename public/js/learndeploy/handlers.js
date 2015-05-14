@@ -11,10 +11,7 @@ var addMediaToCard = function() {
 	if (setNewYouTubeMedia.size > 0) {
 		console.log("Adding video to card. setNewYouTubeMedia.size: " + setNewYouTubeMedia.size);
 		var cardColYouTubeVideo = getCardCol($cardItems);
-		cardColYouTubeVideo.attr({
-			"class" : "auto-resizable-iframe"
-		});
-
+		
 		// Add all selected videos to card.
 		setNewYouTubeMedia.forEach(function(id, id2, set) {
 			// console.log("Inside anonymous function. $cardItems:" +
@@ -26,8 +23,8 @@ var addMediaToCard = function() {
 			// var mediaDiv = $("#" + divId + "")
 
 			mediaDiv.tubeplayer({
-				width : '100%', // the width of the player
-				height : '300', // the height of the player
+				width : '50%', // the width of the player
+				height : '50%', // the height of the player
 				allowFullScreen : "true", // true by default, allow user to go full
 				// screen
 				initialVideo : id, // the video that is loaded into the player
