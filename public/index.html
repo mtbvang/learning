@@ -12,16 +12,16 @@
 <title>Learn Deploy</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Boostrap X-editable -->
 <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
 	rel="stylesheet" />
 <!-- JQuery UI -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
 <!-- Custom CSS -->
-<link href="../css/learndeploy/main.css" rel="stylesheet">
-<link href="../css/learndeploy/youtube.css" rel="stylesheet">
-<link href="../css/learndeploy/cornerbutton.css" rel="stylesheet">
+<link href="css/learndeploy/main.css" rel="stylesheet">
+<link href="css/learndeploy/youtube.css" rel="stylesheet">
+<link href="css/learndeploy/cornerbutton.css" rel="stylesheet">
 <style>
 body {
 	padding-top: 70px;
@@ -74,35 +74,18 @@ body {
 				<div id="loggedout">
 					<p>Welcome to Learn/Deploy</p>
 					<p>To get started, you need to connect to Trello and import your board.</p>
-					<a id="connectLinkTrello" class="btn btn-primary" href="#">Connect to Trello</a> <br> <br>
-					<p>Or connect to Pocket.</p>
-					<!--form action="https://getpocket.com/v3/oauth/request" method="post">
-						<input type="hidden" name="consumer_key" value="41238-121a338b71441f7506da66ff">
-						<input type="hidden" name="redirect_uri" value="http://learn.cfir.foundersapps.local:3002/static/index.html"><br>
-						<input class="btn btn-primary" type="submit" value="Connect to Pocket">
-					</form> -->
-					<a id="connectLinkPocket" class="btn btn-primary" href="https://getpocket.com/auth/authorize?request_token=4248c8e1-3107-33b5-c364-fa963d&redirect_uri=http://learn.cfir.foundersapps.local:3002/static/index.html">Connect to Pocket</a>
+					<a id="connectLink" class="btn btn-primary" href="#">Connect to Trello</a>
 				</div>
 
-
-				<div id="loggedinTrello">
-					<div id="headerTrello">
-						Logged in to Trello as <span id="fullNameTrello"></span> <a id="disconnectTrello" href="#">Log Out</a>
+				<div id="loggedin">
+					<div id="header">
+						Logged in to Trello as <span id="fullName"></span> <a id="disconnect" href="#">Log Out</a>
 					</div>
 					<p>Great!</p>
 					<p>Now let's import the board you want to work on!</p>
 					<p>Choose it in the dropdown.</p>
-					<div id="outputTrello"></div>
+					<div id="output"></div>
 					<div class="container" id="outputCards"></div>
-				</div>
-
-				<div id="loggedinPocket">
-					<div id="headerPocket">
-						Logged in to Pocket. <a id="disconnectPocket" href="#">Log Out</a>
-					</div>
-
-					<div id="outputPocket"></div>
-
 				</div>
 			</div>
 		</div>
@@ -121,7 +104,7 @@ body {
 								<label for="youtubeVideoId">Youtube Video ID</label>
 								<div class="input-group">
 									<input class="form-control input-xlarge" id="searchYoutubeByIdInput"> <span class="input-group-btn">
-										<button id="searchYoutubeByIdBtn" class="btn btn-default pull-right" type="button">Search</button>
+										<button id="searchYoutubeByIdBtn" class="btn btn-default pull-right" type="button" >Search</button>
 									</span>
 								</div>
 								<p class="help-block">Or use the search box below.</p>
@@ -167,27 +150,25 @@ body {
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/1.18.18/jquery.autosize.js"></script>
 
 		<!-- Bootstrap Core JavaScript -->
-		<script src="../js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 
 		<!-- Trello -->
 		<script src="https://api.trello.com/1/client.js?key=ec0c057605cae324acf4aa8e15024520"></script>
 
 		<!-- Youtube -->
-		<script src="../js/jQuery.tubeplayer.js"></script>
-		<script src="../js/learndeploy/auth.js"></script>
-		<script src="../js/learndeploy/search.js"></script>
+		<script src="js/jQuery.tubeplayer.js"></script>
+		<script src="js/learndeploy/auth.js"></script>
+		<script src="js/learndeploy/search.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=loadAPIClientInterfaces"></script>
 
 		<!-- Bootstrap X-editable -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 
 		<!-- Custom Application JS  -->
-		<script src="../js/learndeploy/index.js"></script>
-		<script src="../js/learndeploy/trello.js"></script>
-		<script src="../js/learndeploy/pocket.js"></script>
-		<script src="../js/learndeploy/handlers.js"></script>
-		<script src="../js/learndeploy/youtubeSearch.js"></script>
-		<script src="../js/learndeploy/buttons.js"></script>
+		<script src="js/learndeploy/trello.js"></script>
+		<script src="js/learndeploy/handlers.js"></script>
+		<script src="js/learndeploy/youtubeSearch.js"></script>
+		<script src="js/learndeploy/buttons.js"></script>
 </body>
 
 </html>
