@@ -17,7 +17,7 @@ module.exports = function(app) {
 
 	// about page route (http://localhost:8080/about)
 	router.get('/about', function(req, res) {
-		res.send('I'm the about page!');
+		res.send('I\'m the about page!');
 	});
 
 	app.use('/', router);
